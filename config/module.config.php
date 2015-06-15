@@ -42,8 +42,8 @@ return array(
         'factories' => array(
             'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy' => 'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategyFactory',
         ),
-        'services' => array(
-            'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewRenderer' => new ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintRenderer(),
+        'invokables' => array(
+            'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewRenderer' => 'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintRenderer',
         ),
     ),
     'controllers' => array(

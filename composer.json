@@ -40,7 +40,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ZF\\Apigility\\Documentation\\ApiBlueprint\\": "src/",
+            "ZF\\Apigility\\Documentation\\ApiBlueprint\\": "src/"
         },
         "classmap": [
             "Module.php"
