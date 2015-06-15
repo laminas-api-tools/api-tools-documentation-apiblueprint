@@ -1,7 +1,7 @@
 <?php 
 /**
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
  */
 
@@ -32,7 +32,7 @@ class Resource {
 	private $uri;
 
 	/**
-	 * @var Blueprint\Action[]
+	 * @var Action[]
 	 */
 	private $actions = array();
 
@@ -43,7 +43,7 @@ class Resource {
 
 	/**
 	 * @param BaseService $service
-	 * @param BaseOperations[] $operations
+	 * @param BaseOperation[] $operations
 	 * @param string $uri
 	 * @param string $resourceType self::RESOURCE_TYPE_*
 	 */
@@ -96,7 +96,7 @@ class Resource {
     }
 
     /**
-     * @return Blueprint\Action[] 
+     * @return Action[] 
      */
     public function getActions() {
     	return $this->actions;
@@ -105,7 +105,7 @@ class Resource {
     private function createActions() {
     	foreach ($this->operations as $operation) {
     		$action = new Action($operation);
-    		if ($action->isEntityChanging()) {
+    		if ($action->allowsChangingEntity()) {
     			$action->setBodyProperties(array_filter($this->service->getFields(), function($field){
     				return $field->isRequired();
     			}));

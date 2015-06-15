@@ -1,7 +1,7 @@
 <?php
 /**
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @copyright Copyright (c) 2015 Apiary Inc. <support@apiary.io>
  */
 
@@ -17,7 +17,7 @@ class Api
     private $api;
 
     /**
-     * @var Blueprint\ResourceGroup[] 
+     * @var ResourceGroup[] 
      */
     private $resourceGroups = array();
 
@@ -37,7 +37,7 @@ class Api
     }
 
     /**
-     * @return Blueprint\ResourceGroup[]
+     * @return ResourceGroup[]
      */
     public function getResourceGroups() {
         return $this->resourceGroups;

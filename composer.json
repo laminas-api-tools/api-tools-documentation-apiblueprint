@@ -27,10 +27,10 @@
     },
     "require": {
         "php": ">=5.3.23",
-        "zendframework/zend-eventmanager": "~2.3",
-        "zendframework/zend-mvc": "~2.3",
-        "zendframework/zend-servicemanager": "~2.3",
-        "zendframework/zend-view": "~2.3",
+        "zendframework/zend-eventmanager": "~2.4",
+        "zendframework/zend-mvc": "~2.4",
+        "zendframework/zend-servicemanager": "~2.4",
+        "zendframework/zend-view": "~2.4",
         "zfcampus/zf-api-problem": "~1.0",
         "zfcampus/zf-apigility-documentation": "~1.0",
         "zfcampus/zf-content-negotiation": "~1.0"
@@ -41,10 +41,14 @@
     "autoload": {
         "psr-4": {
             "ZF\\Apigility\\Documentation\\ApiBlueprint\\": "src/",
-            "ZFTest\\Apigility\\Documentation\\ApiBlueprint\\": "test/"
         },
         "classmap": [
             "Module.php"
         ]
+    },    
+    "autoload-dev": {
+        "psr-4": {
+            "ZFTest\\Apigility\\Documentation\\ApiBlueprint\\": "test/"
+        }
     }
 }

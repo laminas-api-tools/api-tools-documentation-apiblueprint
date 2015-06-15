@@ -1,7 +1,7 @@
 <?php
 /**
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
  */
 
@@ -29,8 +29,8 @@ class ActionTest extends TestCase
 		$this->assertEquals($this->action->getHttpMethod(), 'POST');
 	}
 
-	public function testIsEntityChangingMethod() {
-		$this->assertTrue($this->action->isEntityChanging());
+	public function testallowsChangingEntityMethod() {
+		$this->assertTrue($this->action->allowsChangingEntity());
 	}
 
 	public function testActionRequestDescription() {
