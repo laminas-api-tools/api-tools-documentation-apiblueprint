@@ -106,7 +106,7 @@ class Resource {
     	foreach ($this->operations as $operation) {
     		$action = new Action($operation);
     		if ($action->allowsChangingEntity()) {
-    			$action->setBodyProperties(array_filter($this->service->getFields(), function($field){
+                $action->setBodyProperties(array_filter($this->service->getFields('input_filter'), function($field){
     				return $field->isRequired();
     			}));
     		}
