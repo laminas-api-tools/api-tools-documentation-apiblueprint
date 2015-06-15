@@ -9,8 +9,14 @@ namespace ZF\Apigility\Documentation\ApiBlueprint;
 
 use Zend\View\Renderer\RendererInterface as Renderer;
 use Zend\View\Resolver\ResolverInterface;
+use Zend\Uri\Http as Uri;
 
 class ApiBlueprintRenderer implements Renderer {
+
+    /**
+     * Uri
+     */
+    private $requestUri;
 
 	/**
 	 * @return mixed
@@ -18,6 +24,13 @@ class ApiBlueprintRenderer implements Renderer {
 	public function getEngine() {
 		return $this;
 	}
+
+    /**
+     * @param Uri $uri
+     */
+    public function setRequestUri(Uri $requestUri) {
+        $this->requestUri = $requestUri;
+    }
 
     /**
      * @param  ResolverInterface $resolver
@@ -33,6 +46,9 @@ class ApiBlueprintRenderer implements Renderer {
      * @return string The script output.
      */
     public function render($nameOrModel, $values = null) {
-    	return $nameOrModel->getFormattedApiBlueprint();
+        $port = $this->requestUri->getPort();
+        $host = $this->requestUri->getHost();
+        $host .= $port ? ':' . $port : '';
+        return $nameOrModel->getFormattedApiBlueprint($this->requestUri->getScheme(), $host);
     }
 }

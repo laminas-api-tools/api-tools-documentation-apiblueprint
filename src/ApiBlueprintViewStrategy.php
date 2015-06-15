@@ -51,6 +51,7 @@ class ApiBlueprintViewStrategy extends AbstractListenerAggregate {
         if (! $model instanceof ApiBlueprintModel) {
             return;
         }
+        $this->renderer->setRequestUri($e->getRequest()->getUri());
         $this->model = $model;
         return $this->renderer;
     }

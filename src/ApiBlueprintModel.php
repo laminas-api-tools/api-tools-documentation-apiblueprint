@@ -28,10 +28,10 @@ class ApiBlueprintModel extends ViewModel {
     /**
      * @return  string
      */
-    public function getFormattedApiBlueprint() {
+    public function getFormattedApiBlueprint($scheme, $host) {
         $model = new Api($this->variables['documentation']);
         $this->apiBlueprint = 'FORMAT: ' . self::FORMAT . PHP_EOL;
-        $this->apiBlueprint .= 'HOST: ' . $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . self::EMPTY_ROW; 
+        $this->apiBlueprint .= 'HOST: ' . $scheme . "://" . $host . self::EMPTY_ROW; 
         $this->apiBlueprint .= '# ' . $model->getName() . PHP_EOL;
         $this->apiBlueprint .= $this->writeFormattedResourceGroups($model->getResourceGroups());
 
