@@ -11,6 +11,7 @@ namespace ZFTest\Apigility\Documentation\ApiBlueprint;
 use PHPUnit_Framework_TestCase as TestCase;
 use Zend\EventManager\EventManager;
 use Zend\Http\Response as HttpResponse;
+use Zend\Http\Request as HttpRequest;
 use Zend\Stdlib\Response as StdlibResponse;
 use Zend\View\ViewEvent;
 use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy;
@@ -47,6 +48,7 @@ class ApiBlueprintViewStrategyTest extends TestCase
         $event = new ViewEvent();
         $event->setName(ViewEvent::EVENT_RENDERER);
         $event->setModel(new ApiBlueprintModel(array()));
+        $event->setRequest(new HttpRequest());
 
         $renderer = $this->strategy->selectRenderer($event);
         $this->assertSame($this->renderer, $renderer);
