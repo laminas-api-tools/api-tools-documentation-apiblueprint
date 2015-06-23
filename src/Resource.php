@@ -48,7 +48,7 @@ class Resource
      * @param string $uri
      * @param string $resourceType self::RESOURCE_TYPE_*
      */
-    public function __construct(BaseService $service, array $operations = null, $uri, $resourceType)
+    public function __construct(BaseService $service, array $operations, $uri, $resourceType)
     {
         $this->service = $service;
         $this->operations = $operations;
