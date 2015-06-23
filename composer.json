@@ -33,7 +33,8 @@
         "zendframework/zend-view": "~2.4",
         "zfcampus/zf-api-problem": "~1.0",
         "zfcampus/zf-apigility-documentation": "~1.0",
-        "zfcampus/zf-content-negotiation": "~1.0"
+        "zfcampus/zf-content-negotiation": "~1.0",
+        "squizlabs/php_codesniffer": "^2.3"
     },
     "require-dev": {
         "phpunit/PHPUnit": "3.7.*"
