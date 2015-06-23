@@ -19,7 +19,7 @@ class Api
     /**
      * @var ResourceGroup[]
      */
-    private $resourceGroups = [];
+    private $resourceGroups = array();
 
     /**
      * @param BaseApi $api

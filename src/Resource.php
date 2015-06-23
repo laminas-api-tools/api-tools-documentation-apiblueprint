@@ -35,7 +35,7 @@ class Resource
     /**
      * @var Action[]
      */
-    private $actions = [];
+    private $actions = array();
 
     /**
      * @var self::RESOURCE_TYPE_*

@@ -23,7 +23,7 @@ class ResourceTest extends TestCase
             ->expects($this->any())
             ->method('getRouteIdentifierName')
             ->will($this->returnValue('Mock parameter'));
-        $this->resource = new Resource($baseServiceMock, [], 'blueprint/test', 'entity');
+        $this->resource = new Resource($baseServiceMock, array(), 'blueprint/test', 'entity');
     }
 
     public function testResourceName()

@@ -19,12 +19,12 @@ class Action
     /**
      * @var \ZF\Apigility\Documentation\Field[]
      */
-    private $bodyProperties = [];
+    private $bodyProperties = array();
 
     /**
      * @var array
      */
-    private static $entityChangingMethods = ['PUT', 'POST', 'PATCH'];
+    private static $entityChangingMethods = array('PUT', 'POST', 'PATCH');
 
     /**
      * @param BaseOperation $operations
