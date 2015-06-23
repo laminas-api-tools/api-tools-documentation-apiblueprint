@@ -11,10 +11,10 @@ class ApiBlueprintViewStrategyFactory
 {
     /**
      * @param \Zend\ServiceManager\ServiceLocatorInterface $services
-     * @return \ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy
+     * @return ApiBlueprintViewStrategy
      */
     public function __invoke($services)
     {
-        return new ApiBlueprintViewStrategy($services->get('ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewRenderer'));
+        return new ApiBlueprintViewStrategy($services->get(__NAMESPACE__ . '\ApiBlueprintViewRenderer'));
     }
 }
