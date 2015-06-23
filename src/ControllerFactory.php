@@ -23,10 +23,11 @@ class ControllerFactory implements FactoryInterface
         $services = $controllers->getServiceLocator();
         if (!$services->has('ZF\Apigility\Documentation\ApiFactory')) {
             throw new ServiceNotCreatedException(sprintf(
-                '%s\BlueprintController requires the service ZF\Apigility\Documentation\ApiFactory, which was not found',
+                '%s\BlueprintController requires the service ZF\Apigility\Documentation\ApiFactory, '
+                . 'which was not found',
                 __NAMESPACE__
             ));
         }
-        return new \ZF\Apigility\Documentation\ApiBlueprint\Controller($services->get('ZF\Apigility\Documentation\ApiFactory'));
+        return new Controller($services->get('ZF\Apigility\Documentation\ApiFactory'));
     }
 }
