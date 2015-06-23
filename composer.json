@@ -1,0 +1,54 @@
+{
+    "name": "zfcampus/zf-apigility-documentation-apiblueprint",
+    "description": "Apigility API Blueprint Documentation Module",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "zf2",
+        "zend",
+        "module",
+        "apigility",
+        "documentation",
+        "API Blueprint",
+        "apiary"
+    ],
+    "homepage": "http://apigility.org/",
+    "support": {
+        "email": "apigility-users@zend.com",
+        "irc": "irc://irc.freenode.net/apigility",
+        "source": "https://github.com/zfcampus/zf-apigility-documentation-apiblueprint",
+        "issues": "https://github.com/zfcampus/zf-apigility-documentation-apiblueprint/issues"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev",
+            "dev-develop": "1.1-dev"
+        }
+    },
+    "require": {
+        "php": ">=5.3.23",
+        "zendframework/zend-eventmanager": "~2.4",
+        "zendframework/zend-mvc": "~2.4",
+        "zendframework/zend-servicemanager": "~2.4",
+        "zendframework/zend-view": "~2.4",
+        "zfcampus/zf-api-problem": "~1.0",
+        "zfcampus/zf-apigility-documentation": "~1.0",
+        "zfcampus/zf-content-negotiation": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/PHPUnit": "3.7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ZF\\Apigility\\Documentation\\ApiBlueprint\\": "src/"
+        },
+        "classmap": [
+            "Module.php"
+        ]
+    },    
+    "autoload-dev": {
+        "psr-4": {
+            "ZFTest\\Apigility\\Documentation\\ApiBlueprint\\": "test/"
+        }
+    }
+}
