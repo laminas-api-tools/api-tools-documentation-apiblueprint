@@ -82,7 +82,8 @@ class ApiBlueprintModel extends ViewModel
             $requestDescription = $action->getRequestDescription();
             if ($action->allowsChangingEntity() && !empty($requestDescription)) {
                 $this->apiBlueprint .= '+ Request' . self::EMPTY_ROW;
-                $this->apiBlueprint .= $this->getFormattedCodeBlock($action->getRequestDescription())  . self::EMPTY_ROW;
+                $this->apiBlueprint .= $this->getFormattedCodeBlock($action->getRequestDescription())
+                    . self::EMPTY_ROW;
             }
             $this->writeFormattedResponses($action);
         }
@@ -96,7 +97,8 @@ class ApiBlueprintModel extends ViewModel
         foreach ($action->getPossibleResponses() as $response) {
             $this->apiBlueprint .= '+ Response ' . $response['code']  . self::EMPTY_ROW;
             if ($response['code'] == 200) {
-                $this->apiBlueprint .= $this->getFormattedCodeBlock($action->getResponseDescription()) . self::EMPTY_ROW;
+                $this->apiBlueprint .= $this->getFormattedCodeBlock($action->getResponseDescription())
+                    . self::EMPTY_ROW;
             }
         }
     }
@@ -123,7 +125,8 @@ class ApiBlueprintModel extends ViewModel
             if ($resourceType === Resource::RESOURCE_TYPE_ENTITY) {
                 $this->apiBlueprint .= " + " . $resource->getParameter() . self::EMPTY_ROW;
             } else {
-                // Apigility provides pagination results for collections automatically, so page parameter will be available
+                // Apigility provides pagination results for collections
+                // automatically, so page parameter will be available.
                 $this->apiBlueprint .= " + " . 'page' . self::EMPTY_ROW;
             }
         }
