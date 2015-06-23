@@ -15,8 +15,14 @@ class ResourceTest extends TestCase
     public function setUp()
     {
         $baseServiceMock = $this->getMockBuilder('ZF\Apigility\Documentation\Service')->getMock();
-        $baseServiceMock->expects($this->any())->method('getName')->will($this->returnValue('Mock Service'));
-        $baseServiceMock->expects($this->any())->method('getRouteIdentifierName')->will($this->returnValue('Mock parameter'));
+        $baseServiceMock
+            ->expects($this->any())
+            ->method('getName')
+            ->will($this->returnValue('Mock Service'));
+        $baseServiceMock
+            ->expects($this->any())
+            ->method('getRouteIdentifierName')
+            ->will($this->returnValue('Mock parameter'));
         $this->resource = new Resource($baseServiceMock, [], 'blueprint/test', 'entity');
     }
 
