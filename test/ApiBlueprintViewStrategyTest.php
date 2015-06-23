@@ -3,7 +3,6 @@
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
- * Based on Swagger view strategy test https://github.com/zfcampus/zf-apigility-documentation-swagger/blob/master/test/SwaggerViewStrategyTest.php
  */
 
 namespace ZFTest\Apigility\Documentation\ApiBlueprint;
@@ -18,6 +17,13 @@ use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy;
 use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintRenderer;
 use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintModel;
 
+/**
+ * Test the ApiBlueprintViewStrategy.
+ *
+ * Based on Swagger view strategy test:
+ *
+ * - https://github.com/zfcampus/zf-apigility-documentation-swagger/blob/master/test/SwaggerViewStrategyTest.php
+ */
 class ApiBlueprintViewStrategyTest extends TestCase
 {
     public function setUp()
