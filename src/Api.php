@@ -13,18 +13,19 @@ class Api
 {
     /**
      * @var BaseApi
-     */    
+     */
     private $api;
 
     /**
-     * @var ResourceGroup[] 
+     * @var ResourceGroup[]
      */
-    private $resourceGroups = array();
+    private $resourceGroups = [];
 
     /**
      * @param BaseApi $api
      */
-    public function __construct(BaseApi $api) {
+    public function __construct(BaseApi $api)
+    {
         $this->api = $api;
         $this->createResourceGroups();
     }
@@ -32,18 +33,21 @@ class Api
     /**
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->api->getName();
     }
 
     /**
      * @return ResourceGroup[]
      */
-    public function getResourceGroups() {
+    public function getResourceGroups()
+    {
         return $this->resourceGroups;
     }
 
-    private function createResourceGroups() {
+    private function createResourceGroups()
+    {
         foreach ($this->api->getServices() as $service) {
             $this->resourceGroups[] = new ResourceGroup($service);
         }

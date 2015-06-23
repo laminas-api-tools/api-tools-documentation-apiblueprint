@@ -12,18 +12,21 @@ use ZF\Apigility\Documentation\ApiBlueprint\Api;
 
 class ApiTest extends TestCase
 {
-public function setUp () {
-	$baseApiMock = $this->getMockBuilder('ZF\Apigility\Documentation\Api')->getMock(); 
-	$baseApiMock->expects($this->once())->method('getServices')->will($this->returnValue(array()));
-	$baseApiMock->expects($this->any())->method('getName')->will($this->returnValue('Mock API'));
-	$this->api = new Api($baseApiMock);
-}
+    public function setUp()
+    {
+        $baseApiMock = $this->getMockBuilder('ZF\Apigility\Documentation\Api')->getMock();
+        $baseApiMock->expects($this->once())->method('getServices')->will($this->returnValue([]));
+        $baseApiMock->expects($this->any())->method('getName')->will($this->returnValue('Mock API'));
+        $this->api = new Api($baseApiMock);
+    }
 
-	public function testApiName() {
-		$this->assertEquals($this->api->getName(), 'Mock API');
-	}
+    public function testApiName()
+    {
+        $this->assertEquals($this->api->getName(), 'Mock API');
+    }
 
-	public function testResourceGroups() {
-		$this->assertEquals($this->api->getResourceGroups(), array());
-	}
+    public function testResourceGroups()
+    {
+        $this->assertEquals($this->api->getResourceGroups(), []);
+    }
 }

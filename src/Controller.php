@@ -32,7 +32,7 @@ class Controller extends AbstractActionController
     public function listAction()
     {
         $apis = $this->apiFactory->createApiList();
-        $viewModel = new ViewModel(array('apis' => $apis));
+        $viewModel = new ViewModel(['apis' => $apis]);
         $viewModel->setTemplate('zf-apigility-documentation-blueprint/api-list');
         return $viewModel;
     }
@@ -45,7 +45,7 @@ class Controller extends AbstractActionController
         $apiName = $this->params()->fromRoute('api');
         $apiVersion = $this->params()->fromRoute('version', '1');
 
-        $viewModel = new ViewModel(array('api' => $apiName));
+        $viewModel = new ViewModel(['api' => $apiName]);
         $viewModel->setTemplate('zf-apigility-documentation-blueprint/api');
         $viewModel->setTerminal(true);
 

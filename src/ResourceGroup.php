@@ -19,7 +19,7 @@ class ResourceGroup
     /**
      * @var Resource[]
      */
-    private $resources = array();
+    private $resources = [];
 
     /**
      * @param BaseService $service
@@ -33,45 +33,51 @@ class ResourceGroup
     /**
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->service->getName();
     }
 
     /**
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->service->getDescription();
     }
 
     /**
      * @return Resource[]
      */
-    public function getResources() {
+    public function getResources()
+    {
         return $this->resources;
     }
 
     /**
      * @return string
      */
-    private function getCollectionUri () {
+    private function getCollectionUri()
+    {
         return substr($this->service->getRoute(), 0, strpos($this->service->getRoute(), '['));
     }
 
     /**
      * @return string
      */
-    private function getEntityUri () {
-        return str_replace(array('[', ']', '{/', '{:'), array('{', '}', '/{', '{'), $this->service->getRoute());
+    private function getEntityUri()
+    {
+        return str_replace(['[', ']', '{/', '{:'], ['{', '}', '/{', '{'], $this->service->getRoute());
     }
 
-    private function createResources() {
+    private function createResources()
+    {
         //if there is routeIdentifierName, it is REST service and we need to handle both collection and entities
-        if($this->service->getRouteIdentifierName()) {
+        if ($this->service->getRouteIdentifierName()) {
             $this->resources[] = new Resource($this->service, $this->service->getOperations(), $this->getCollectionUri(), Resource::RESOURCE_TYPE_COLLECTION);
             $this->resources[] = new Resource($this->service, $this->service->getEntityOperations(), $this->getEntityUri(), Resource::RESOURCE_TYPE_ENTITY);
         } else {
-            $this->resources[] = new Resource($this->service, $this->service->getOperations(), $this->getEntityUri(), Resource::RESOURCE_TYPE_RPC);    
+            $this->resources[] = new Resource($this->service, $this->service->getOperations(), $this->getEntityUri(), Resource::RESOURCE_TYPE_RPC);
         }
     }
 }

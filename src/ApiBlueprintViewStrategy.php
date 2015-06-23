@@ -11,7 +11,8 @@ use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventManagerInterface;
 use Zend\View\ViewEvent;
 
-class ApiBlueprintViewStrategy extends AbstractListenerAggregate {
+class ApiBlueprintViewStrategy extends AbstractListenerAggregate
+{
 
 /**
      * @var ViewModel
@@ -37,8 +38,8 @@ class ApiBlueprintViewStrategy extends AbstractListenerAggregate {
      */
     public function attach(EventManagerInterface $events, $priority = 200)
     {
-        $this->listeners[] = $events->attach(ViewEvent::EVENT_RENDERER, array($this, 'selectRenderer'), $priority);
-        $this->listeners[] = $events->attach(ViewEvent::EVENT_RESPONSE, array($this, 'injectResponse'), $priority);
+        $this->listeners[] = $events->attach(ViewEvent::EVENT_RENDERER, [$this, 'selectRenderer'], $priority);
+        $this->listeners[] = $events->attach(ViewEvent::EVENT_RESPONSE, [$this, 'injectResponse'], $priority);
     }
 
     /**
@@ -74,5 +75,4 @@ class ApiBlueprintViewStrategy extends AbstractListenerAggregate {
         $headers->addHeaderLine('Content-Type', 'text/vnd.apiblueprint+markdown');
         $response->setContent($e->getResult());
     }
-
 }

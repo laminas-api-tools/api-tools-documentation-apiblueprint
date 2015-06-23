@@ -12,19 +12,21 @@ use ZF\Apigility\Documentation\ApiBlueprint\Resource;
 
 class ResourceTest extends TestCase
 {
-public function setUp () {
-	$baseServiceMock = $this->getMockBuilder('ZF\Apigility\Documentation\Service')->getMock(); 
-	$baseServiceMock->expects($this->any())->method('getName')->will($this->returnValue('Mock Service'));
-	$baseServiceMock->expects($this->any())->method('getRouteIdentifierName')->will($this->returnValue('Mock parameter'));
-	$this->resource = new Resource($baseServiceMock, array(), 'blueprint/test', 'entity');
-}
+    public function setUp()
+    {
+        $baseServiceMock = $this->getMockBuilder('ZF\Apigility\Documentation\Service')->getMock();
+        $baseServiceMock->expects($this->any())->method('getName')->will($this->returnValue('Mock Service'));
+        $baseServiceMock->expects($this->any())->method('getRouteIdentifierName')->will($this->returnValue('Mock parameter'));
+        $this->resource = new Resource($baseServiceMock, [], 'blueprint/test', 'entity');
+    }
 
-	public function testResourceName() {
-		$this->assertEquals($this->resource->getName(), 'Mock Service');
-	}
+    public function testResourceName()
+    {
+        $this->assertEquals($this->resource->getName(), 'Mock Service');
+    }
 
-	public function testResourceParameter() {
-		$this->assertEquals($this->resource->getParameter(), 'Mock parameter');
-	}
-
+    public function testResourceParameter()
+    {
+        $this->assertEquals($this->resource->getParameter(), 'Mock parameter');
+    }
 }

@@ -11,24 +11,27 @@ use Zend\View\Renderer\RendererInterface as Renderer;
 use Zend\View\Resolver\ResolverInterface;
 use Zend\Uri\Http as Uri;
 
-class ApiBlueprintRenderer implements Renderer {
+class ApiBlueprintRenderer implements Renderer
+{
 
     /**
      * Uri
      */
     private $requestUri;
 
-	/**
-	 * @return mixed
-	 */
-	public function getEngine() {
-		return $this;
-	}
+    /**
+     * @return mixed
+     */
+    public function getEngine()
+    {
+        return $this;
+    }
 
     /**
      * @param Uri $uri
      */
-    public function setRequestUri(Uri $requestUri) {
+    public function setRequestUri(Uri $requestUri)
+    {
         $this->requestUri = $requestUri;
     }
 
@@ -36,8 +39,9 @@ class ApiBlueprintRenderer implements Renderer {
      * @param  ResolverInterface $resolver
      * @return RendererInterface
      */
-    public function setResolver(ResolverInterface $resolver) {
-    	$this->resolver = $resolver;
+    public function setResolver(ResolverInterface $resolver)
+    {
+        $this->resolver = $resolver;
     }
 
     /**
@@ -45,7 +49,8 @@ class ApiBlueprintRenderer implements Renderer {
      * @param  null|array|\ArrayAccess $values      Values to use during rendering
      * @return string The script output.
      */
-    public function render($nameOrModel, $values = null) {
+    public function render($nameOrModel, $values = null)
+    {
         $port = $this->requestUri->getPort();
         $host = $this->requestUri->getHost();
         $host .= $port ? ':' . $port : '';
