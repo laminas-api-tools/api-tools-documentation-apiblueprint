@@ -72,12 +72,29 @@ class ResourceGroup
 
     private function createResources()
     {
-        //if there is routeIdentifierName, it is REST service and we need to handle both collection and entities
+        // If there is routeIdentifierName, it is REST service and we need to
+        // handle both collection and entities
         if ($this->service->getRouteIdentifierName()) {
-            $this->resources[] = new Resource($this->service, $this->service->getOperations(), $this->getCollectionUri(), Resource::RESOURCE_TYPE_COLLECTION);
-            $this->resources[] = new Resource($this->service, $this->service->getEntityOperations(), $this->getEntityUri(), Resource::RESOURCE_TYPE_ENTITY);
-        } else {
-            $this->resources[] = new Resource($this->service, $this->service->getOperations(), $this->getEntityUri(), Resource::RESOURCE_TYPE_RPC);
+            $this->resources[] = new Resource(
+                $this->service,
+                $this->service->getOperations(),
+                $this->getCollectionUri(),
+                Resource::RESOURCE_TYPE_COLLECTION
+            );
+            $this->resources[] = new Resource(
+                $this->service,
+                $this->service->getEntityOperations(),
+                $this->getEntityUri(),
+                Resource::RESOURCE_TYPE_ENTITY
+            );
+            return;
         }
+
+        $this->resources[] = new Resource(
+            $this->service,
+            $this->service->getOperations(),
+            $this->getEntityUri(),
+            Resource::RESOURCE_TYPE_RPC
+        );
     }
 }
