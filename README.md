@@ -5,7 +5,7 @@ Introduction
 ------------
 
 This module provides Apigility the ability to show API documentation through a
-[Apiary](http://apiry.io/) documentation.
+[Apiary](https://apiary.io/) documentation.
 
 In addition to providing Apiary documentation, module also plugs in the original Apigility documentation and provides content negotiated response with raw [API Blueprint](https://apiblueprint.org).
 
