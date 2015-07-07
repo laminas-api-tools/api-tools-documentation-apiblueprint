@@ -23,6 +23,8 @@ class ResourceTest extends TestCase
             ->expects($this->any())
             ->method('getRouteIdentifierName')
             ->will($this->returnValue('Mock parameter'));
+
+        $this->service  = $baseServiceMock;
         $this->resource = new Resource($baseServiceMock, array(), 'blueprint/test', 'entity');
     }
 
@@ -34,5 +36,19 @@ class ResourceTest extends TestCase
     public function testResourceParameter()
     {
         $this->assertEquals($this->resource->getParameter(), 'Mock parameter');
+    }
+
+    /**
+     * @group 4
+     */
+    public function testPullsFieldsWhenRetrievingBodyProperties()
+    {
+        $this->service
+            ->expects($this->once())
+            ->method('getFields')
+            ->with($this->equalTo('input_filter'))
+            ->willReturn(array());
+
+        $this->resource->getBodyProperties();
     }
 }
