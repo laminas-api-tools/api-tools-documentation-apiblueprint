@@ -99,7 +99,7 @@ class Resource
      */
     public function getBodyProperties()
     {
-        return $this->service->getFields();
+        return $this->service->getFields('input_filter');
     }
 
     /**
