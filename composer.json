@@ -26,18 +26,18 @@
         }
     },
     "require": {
-        "php": ">=5.3.23",
-        "zendframework/zend-eventmanager": "~2.4.0",
-        "zendframework/zend-mvc": "~2.4.0",
-        "zendframework/zend-servicemanager": "~2.4.0",
-        "zendframework/zend-view": "~2.4.0",
+        "php": ">=5.5",
+        "zendframework/zend-eventmanager": "^2.4.0",
+        "zendframework/zend-mvc": "^2.4.0",
+        "zendframework/zend-servicemanager": "^2.4.0",
+        "zendframework/zend-view": "^2.4.0",
         "zfcampus/zf-api-problem": "~1.0",
         "zfcampus/zf-apigility-documentation": "~1.0",
         "zfcampus/zf-content-negotiation": "~1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.7",
-        "squizlabs/php_codesniffer": "^2.3"
+        "squizlabs/php_codesniffer": "^2.3.1"
     },
     "autoload": {
         "psr-4": {
