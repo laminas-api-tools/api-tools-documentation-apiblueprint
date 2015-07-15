@@ -15,7 +15,7 @@ class ApiTest extends TestCase
     public function setUp()
     {
         $baseApiMock = $this->getMockBuilder('ZF\Apigility\Documentation\Api')->getMock();
-        $baseApiMock->expects($this->once())->method('getServices')->will($this->returnValue(array()));
+        $baseApiMock->expects($this->once())->method('getServices')->will($this->returnValue([]));
         $baseApiMock->expects($this->any())->method('getName')->will($this->returnValue('Mock API'));
         $this->api = new Api($baseApiMock);
     }
@@ -27,6 +27,6 @@ class ApiTest extends TestCase
 
     public function testResourceGroups()
     {
-        $this->assertEquals($this->api->getResourceGroups(), array());
+        $this->assertEquals($this->api->getResourceGroups(), []);
     }
 }
