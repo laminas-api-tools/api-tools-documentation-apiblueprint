@@ -25,7 +25,7 @@ class ResourceTest extends TestCase
             ->will($this->returnValue('Mock parameter'));
 
         $this->service  = $baseServiceMock;
-        $this->resource = new Resource($baseServiceMock, array(), 'blueprint/test', 'entity');
+        $this->resource = new Resource($baseServiceMock, [], 'blueprint/test', 'entity');
     }
 
     public function testResourceName()
@@ -47,7 +47,7 @@ class ResourceTest extends TestCase
             ->expects($this->once())
             ->method('getFields')
             ->with($this->equalTo('input_filter'))
-            ->willReturn(array());
+            ->willReturn([]);
 
         $this->resource->getBodyProperties();
     }
