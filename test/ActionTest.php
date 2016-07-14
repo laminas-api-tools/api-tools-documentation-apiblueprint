@@ -1,7 +1,7 @@
 <?php
 /**
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
  * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
  */
 
@@ -9,12 +9,13 @@ namespace ZFTest\Apigility\Documentation\ApiBlueprint;
 
 use PHPUnit_Framework_TestCase as TestCase;
 use ZF\Apigility\Documentation\ApiBlueprint\Action;
+use ZF\Apigility\Documentation\Operation;
 
 class ActionTest extends TestCase
 {
     public function setUp()
     {
-        $baseOperationMock = $this->getMockBuilder('ZF\Apigility\Documentation\Operation')->getMock();
+        $baseOperationMock = $this->getMockBuilder(Operation::class)->getMock();
         $this->setExpectation($baseOperationMock, 'getDescription', 'Mock Operation Description');
         $this->setExpectation($baseOperationMock, 'getHttpMethod', 'POST');
         $this->setExpectation($baseOperationMock, 'getRequestDescription', 'Mock request description');

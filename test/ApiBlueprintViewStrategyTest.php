@@ -1,7 +1,7 @@
 <?php
 /**
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
  * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
  */
 
@@ -9,6 +9,7 @@ namespace ZFTest\Apigility\Documentation\ApiBlueprint;
 
 use PHPUnit_Framework_TestCase as TestCase;
 use Zend\EventManager\EventManager;
+use Zend\EventManager\Test\EventListenerIntrospectionTrait;
 use Zend\Http\Response as HttpResponse;
 use Zend\Http\Request as HttpRequest;
 use Zend\Stdlib\Response as StdlibResponse;
@@ -26,6 +27,8 @@ use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintModel;
  */
 class ApiBlueprintViewStrategyTest extends TestCase
 {
+    use EventListenerIntrospectionTrait;
+
     public function setUp()
     {
         $this->events   = new EventManager();
@@ -36,17 +39,19 @@ class ApiBlueprintViewStrategyTest extends TestCase
 
     public function testStrategyAttachesToViewEventsAtPriority200()
     {
-        $listeners = $this->events->getListeners(ViewEvent::EVENT_RENDERER);
-        $this->assertEquals(1, count($listeners));
-        $listener = $listeners->top();
-        $this->assertEquals([$this->strategy, 'selectRenderer'], $listener->getCallback());
-        $this->assertEquals(200, $listener->getMetadatum('priority'));
+        $this->assertListenerAtPriority(
+            [$this->strategy, 'selectRenderer'],
+            200,
+            ViewEvent::EVENT_RENDERER,
+            $this->events
+        );
 
-        $listeners = $this->events->getListeners(ViewEvent::EVENT_RESPONSE);
-        $this->assertEquals(1, count($listeners));
-        $listener = $listeners->top();
-        $this->assertEquals([$this->strategy, 'injectResponse'], $listener->getCallback());
-        $this->assertEquals(200, $listener->getMetadatum('priority'));
+        $this->assertListenerAtPriority(
+            [$this->strategy, 'injectResponse'],
+            200,
+            ViewEvent::EVENT_RESPONSE,
+            $this->events
+        );
     }
 
     public function testSelectRendererReturnsApiBlueprintRendererWhenApiBlueprintViewModelIsPresentInEvent()

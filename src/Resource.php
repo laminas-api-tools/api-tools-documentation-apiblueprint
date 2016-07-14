@@ -1,7 +1,7 @@
 <?php
 /**
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
  * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
  */
 
@@ -12,7 +12,6 @@ use ZF\Apigility\Documentation\Operation as BaseOperation;
 
 class Resource
 {
-
     const RESOURCE_TYPE_ENTITY = 'entity';
     const RESOURCE_TYPE_COLLECTION = 'collection';
     const RESOURCE_TYPE_RPC = 'rpc';
@@ -59,7 +58,6 @@ class Resource
         if ($this->getResourceType() == self::RESOURCE_TYPE_COLLECTION && $this->getParameter()) {
             $this->uri .= "?page={page}";
         }
-
     }
 
     /**
@@ -110,6 +108,11 @@ class Resource
         return $this->actions;
     }
 
+    /**
+     * Iterate operations to create actions.
+     *
+     * @return void
+     */
     private function createActions()
     {
         foreach ($this->operations as $operation) {

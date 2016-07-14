@@ -1,20 +1,22 @@
 <?php
 /**
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
  * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
  */
 
 namespace ZF\Apigility\Documentation\ApiBlueprint;
 
-use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventManagerInterface;
+use Zend\EventManager\ListenerAggregateInterface;
+use Zend\EventManager\ListenerAggregateTrait;
 use Zend\View\ViewEvent;
 
-class ApiBlueprintViewStrategy extends AbstractListenerAggregate
+class ApiBlueprintViewStrategy implements ListenerAggregateInterface
 {
+    use ListenerAggregateTrait;
 
-/**
+    /**
      * @var ViewModel
      */
     protected $model;
@@ -33,8 +35,7 @@ class ApiBlueprintViewStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @param EventManagerInterface $events
-     * @param int $priority
+     * {@inheritDoc}
      */
     public function attach(EventManagerInterface $events, $priority = 200)
     {
