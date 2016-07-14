@@ -1,13 +1,14 @@
 <?php
 /**
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
  * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
  */
 
 namespace ZF\Apigility\Documentation\ApiBlueprint;
 
 use Zend\View\Model\ViewModel;
+use ZF\Apigility\Documentation\Field;
 
 class ApiBlueprintModel extends ViewModel
 {
@@ -117,19 +118,22 @@ class ApiBlueprintModel extends ViewModel
     /**
      * @var Resource $resource
      */
-    private function writeUriParameters(\ZF\Apigility\Documentation\ApiBlueprint\Resource $resource)
+    private function writeUriParameters(Resource $resource)
     {
         $resourceType = $resource->getResourceType();
-        if ($resourceType !== Resource::RESOURCE_TYPE_RPC) {
-            $this->apiBlueprint .= '+ Parameters' . PHP_EOL;
-            if ($resourceType === Resource::RESOURCE_TYPE_ENTITY) {
-                $this->apiBlueprint .= " + " . $resource->getParameter() . self::EMPTY_ROW;
-            } else {
-                // Apigility provides pagination results for collections
-                // automatically, so page parameter will be available.
-                $this->apiBlueprint .= " + " . 'page' . self::EMPTY_ROW;
-            }
+        if ($resourceType === Resource::RESOURCE_TYPE_RPC) {
+            return;
         }
+
+        $this->apiBlueprint .= '+ Parameters' . PHP_EOL;
+        if ($resourceType === Resource::RESOURCE_TYPE_ENTITY) {
+            $this->apiBlueprint .= " + " . $resource->getParameter() . self::EMPTY_ROW;
+            return;
+        }
+
+        // Apigility provides pagination results for collections
+        // automatically, so page parameter will be available.
+        $this->apiBlueprint .= " + " . 'page' . self::EMPTY_ROW;
     }
 
     /**
@@ -142,10 +146,10 @@ class ApiBlueprintModel extends ViewModel
     }
 
     /**
-     * @var \ZF\Apigility\Documentation\Field $property
+     * @var Field $property
      * @return string
      */
-    private function getFormattedProperty(\ZF\Apigility\Documentation\Field $property)
+    private function getFormattedProperty(Field $property)
     {
         $output = $property->getName();
         $description = $property->getDescription();
