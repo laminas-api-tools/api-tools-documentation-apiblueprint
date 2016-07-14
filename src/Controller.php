@@ -54,6 +54,5 @@ class Controller extends AbstractActionController
         $viewModel->setVariable('type', 'api');
 
         return $viewModel;
-
     }
 }

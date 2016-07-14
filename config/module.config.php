@@ -1,86 +1,90 @@
 <?php
 /**
  * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
  * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
  */
 
-return array(
-    'router' => array(
-        'routes' => array(
-            'zf-apigility' => array(
-                'child_routes' => array(
-                    'blueprint' => array(
-                        'type' => 'Zend\Mvc\Router\Http\Segment',
-                        'options' => array(
-                            'route'    => '/blueprint',
-                            'defaults' => array(
-                                'controller' => 'ZF\Apigility\Documentation\ApiBlueprint\Controller',
-                                'action'     => 'list',
-                            ),
-                        ),
-                        'may_terminate' => true,
-                        'child_routes' => array(
-                            'api' => array(
-                                'type' => 'Segment',
-                                'options' => array(
-                                    'route' => '/:api',
-                                    'defaults' => array(
-                                        'action' => 'show',
-                                    ),
-                                ),
-                                'may_terminate' => true,
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
+namespace ZF\Apigility\Documentation\ApiBlueprint;
 
-    'service_manager' => array(
-        'factories' => array(
-            'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy' => 'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategyFactory',
-        ),
-        'invokables' => array(
-            'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewRenderer' => 'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintRenderer',
-        ),
-    ),
-    'controllers' => array(
-        'factories' => array(
-            'ZF\Apigility\Documentation\ApiBlueprint\Controller' => 'ZF\Apigility\Documentation\ApiBlueprint\ControllerFactory',
-        ),
-    ),
-    'zf-content-negotiation' => array(
-        'controllers' => array(
-            'ZF\Apigility\Documentation\ApiBlueprint\Controller' => 'Documentation',
-        ),
-        'accept_whitelist' => array(
-            'ZF\Apigility\Documentation\ApiBlueprint\Controller' => array(
+use Zend\ServiceManager\Factory\InvokableFactory;
+use Zend\View\Model\ViewModel;
+use ZF\Apigility\Documentation\JsonModel;
+
+return [
+    'router' => [
+        'routes' => [
+            'zf-apigility' => [
+                'child_routes' => [
+                    'blueprint' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route'    => '/blueprint',
+                            'defaults' => [
+                                'controller' => Controller::class,
+                                'action'     => 'list',
+                            ],
+                        ],
+                        'may_terminate' => true,
+                        'child_routes' => [
+                            'api' => [
+                                'type' => 'segment',
+                                'options' => [
+                                    'route' => '/:api',
+                                    'defaults' => [
+                                        'action' => 'show',
+                                    ],
+                                ],
+                                'may_terminate' => true,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+
+    'service_manager' => [
+        'factories' => [
+            ApiBlueprintViewRenderer::class => InvokableFactory::class,
+            ApiBlueprintViewStrategy::class => ApiBlueprintViewStrategyFactory::class,
+        ],
+    ],
+    'controllers' => [
+        'factories' => [
+            Controller::class => ControllerFactory::class,
+        ],
+    ],
+    'zf-content-negotiation' => [
+        'controllers' => [
+            Controller::class => 'Documentation',
+        ],
+        'accept_whitelist' => [
+            Controller::class => [
                 'text/vnd.apiblueprint+markdown',
-            ),
-        ),
-        'selectors' => array(
-            'Documentation' => array(
-                'Zend\View\Model\ViewModel' => array(
+            ],
+        ],
+        'selectors' => [
+            'Documentation' => [
+                ViewModel::class => [
                     'text/html',
                     'application/xhtml+xml',
-                ),
-                'ZF\Apigility\Documentation\JsonModel' => array(
+                ],
+                JsonModel::class => [
                     'application/json',
-                ),
-                'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintModel' => array(
+                ],
+                ApiBlueprintModel::class => [
                     'text/vnd.apiblueprint+markdown',
-                ),
-            ),
-        ),
-    ),
-    'view_manager' => array(
-        'template_path_stack' => array(
+                ],
+            ],
+        ],
+    ],
+    'view_manager' => [
+        'template_path_stack' => [
             'zf-apigility-documentation-blueprint' => __DIR__ . '/../view',
-        ),
-        'strategies' => array(
-           'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy',
-        ), 
-    ),
-);
+        ],
+        'strategies' => [
+            ApiBlueprintViewStrategy::class,
+        ],
+    ],
+];
