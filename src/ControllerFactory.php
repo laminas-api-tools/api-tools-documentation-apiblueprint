@@ -32,7 +32,7 @@ class ControllerFactory implements FactoryInterface
             ));
         }
 
-        return new Controller($services->get(ApiFactory::class));
+        return new Controller($container->get(ApiFactory::class));
     }
 
     /**
