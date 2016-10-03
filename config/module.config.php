@@ -46,7 +46,7 @@ return [
 
     'service_manager' => [
         'factories' => [
-            ApiBlueprintViewRenderer::class => InvokableFactory::class,
+            ApiBlueprintRenderer::class     => InvokableFactory::class,
             ApiBlueprintViewStrategy::class => ApiBlueprintViewStrategyFactory::class,
         ],
     ],
