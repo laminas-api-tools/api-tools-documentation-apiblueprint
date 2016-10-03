@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.2.1 - TBD
+## 1.2.1 - 2016-10-03
 
 ### Added
 
@@ -18,7 +18,10 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- Fixes references to `ApiBlueprintViewRenderer` within configuration and the
+  `ApiBlueprintViewStrategyFactory` to properly read `ApiBlueprintRenderer`.
+- Updates the variable `$services` in `ControllerFactory` to correctly read
+  `$container`.
 
 ## 1.2.0 - 2016-07-14
 
