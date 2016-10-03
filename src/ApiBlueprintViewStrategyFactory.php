@@ -17,6 +17,6 @@ class ApiBlueprintViewStrategyFactory
      */
     public function __invoke(ContainerInterface $container)
     {
-        return new ApiBlueprintViewStrategy($container->get(ApiBlueprintViewRenderer::class));
+        return new ApiBlueprintViewStrategy($container->get(ApiBlueprintRenderer::class));
     }
 }
