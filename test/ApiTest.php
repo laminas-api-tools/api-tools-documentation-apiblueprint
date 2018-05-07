@@ -7,13 +7,13 @@
 
 namespace ZFTest\Apigility\Documentation\ApiBlueprint;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use ZF\Apigility\Documentation\Api as BaseApi;
 use ZF\Apigility\Documentation\ApiBlueprint\Api;
 
 class ApiTest extends TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         $baseApiMock = $this->getMockBuilder(BaseApi::class)->getMock();
         $baseApiMock->expects($this->once())->method('getServices')->will($this->returnValue([]));

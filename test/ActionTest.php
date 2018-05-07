@@ -7,13 +7,13 @@
 
 namespace ZFTest\Apigility\Documentation\ApiBlueprint;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use ZF\Apigility\Documentation\ApiBlueprint\Action;
 use ZF\Apigility\Documentation\Operation;
 
 class ActionTest extends TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         $baseOperationMock = $this->getMockBuilder(Operation::class)->getMock();
         $this->setExpectation($baseOperationMock, 'getDescription', 'Mock Operation Description');
