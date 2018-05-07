@@ -7,13 +7,13 @@
 
 namespace ZFTest\Apigility\Documentation\ApiBlueprint;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use ZF\Apigility\Documentation\ApiBlueprint\Resource;
 use ZF\Apigility\Documentation\Service;
 
 class ResourceTest extends TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         $baseServiceMock = $this->getMockBuilder(Service::class)->getMock();
         $baseServiceMock

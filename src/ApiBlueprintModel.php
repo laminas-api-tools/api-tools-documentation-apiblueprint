@@ -81,7 +81,7 @@ class ApiBlueprintModel extends ViewModel
             $this->apiBlueprint .= '[' . $action->getHttpMethod() . ']' . self::EMPTY_ROW;
             $this->writeBodyProperties($action->getBodyProperties());
             $requestDescription = $action->getRequestDescription();
-            if ($action->allowsChangingEntity() && !empty($requestDescription)) {
+            if ($action->allowsChangingEntity() && ! empty($requestDescription)) {
                 $this->apiBlueprint .= '+ Request' . self::EMPTY_ROW;
                 $this->apiBlueprint .= $this->getFormattedCodeBlock($action->getRequestDescription())
                     . self::EMPTY_ROW;
