@@ -7,16 +7,16 @@
 
 namespace ZFTest\Apigility\Documentation\ApiBlueprint;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\EventManager\EventManager;
 use Zend\EventManager\Test\EventListenerIntrospectionTrait;
-use Zend\Http\Response as HttpResponse;
 use Zend\Http\Request as HttpRequest;
+use Zend\Http\Response as HttpResponse;
 use Zend\Stdlib\Response as StdlibResponse;
 use Zend\View\ViewEvent;
-use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy;
-use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintRenderer;
 use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintModel;
+use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintRenderer;
+use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy;
 
 /**
  * Test the ApiBlueprintViewStrategy.
@@ -29,7 +29,7 @@ class ApiBlueprintViewStrategyTest extends TestCase
 {
     use EventListenerIntrospectionTrait;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->events   = new EventManager();
         $this->renderer = new ApiBlueprintRenderer();
