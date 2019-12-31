@@ -1,5 +1,3 @@
-sudo: false
-
 language: php
 
 branches:
@@ -35,5 +33,4 @@ script:
   - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then ./vendor/bin/phpcs ; fi
 
 notifications:
-  irc: "irc.freenode.org#apigility-dev"
   email: false

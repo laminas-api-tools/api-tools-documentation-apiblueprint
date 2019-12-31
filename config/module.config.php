@@ -1,21 +1,22 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
+ * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
  */
 
 return array(
     'router' => array(
         'routes' => array(
-            'zf-apigility' => array(
+            'api-tools' => array(
                 'child_routes' => array(
                     'blueprint' => array(
-                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'type' => 'Laminas\Mvc\Router\Http\Segment',
                         'options' => array(
                             'route'    => '/blueprint',
                             'defaults' => array(
-                                'controller' => 'ZF\Apigility\Documentation\ApiBlueprint\Controller',
+                                'controller' => 'Laminas\ApiTools\Documentation\ApiBlueprint\Controller',
                                 'action'     => 'list',
                             ),
                         ),
@@ -40,36 +41,36 @@ return array(
 
     'service_manager' => array(
         'factories' => array(
-            'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy' => 'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategyFactory',
+            'Laminas\ApiTools\Documentation\ApiBlueprint\ApiBlueprintViewStrategy' => 'Laminas\ApiTools\Documentation\ApiBlueprint\ApiBlueprintViewStrategyFactory',
         ),
         'invokables' => array(
-            'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewRenderer' => 'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintRenderer',
+            'Laminas\ApiTools\Documentation\ApiBlueprint\ApiBlueprintViewRenderer' => 'Laminas\ApiTools\Documentation\ApiBlueprint\ApiBlueprintRenderer',
         ),
     ),
     'controllers' => array(
         'factories' => array(
-            'ZF\Apigility\Documentation\ApiBlueprint\Controller' => 'ZF\Apigility\Documentation\ApiBlueprint\ControllerFactory',
+            'Laminas\ApiTools\Documentation\ApiBlueprint\Controller' => 'Laminas\ApiTools\Documentation\ApiBlueprint\ControllerFactory',
         ),
     ),
-    'zf-content-negotiation' => array(
+    'api-tools-content-negotiation' => array(
         'controllers' => array(
-            'ZF\Apigility\Documentation\ApiBlueprint\Controller' => 'Documentation',
+            'Laminas\ApiTools\Documentation\ApiBlueprint\Controller' => 'Documentation',
         ),
         'accept_whitelist' => array(
-            'ZF\Apigility\Documentation\ApiBlueprint\Controller' => array(
+            'Laminas\ApiTools\Documentation\ApiBlueprint\Controller' => array(
                 'text/vnd.apiblueprint+markdown',
             ),
         ),
         'selectors' => array(
             'Documentation' => array(
-                'Zend\View\Model\ViewModel' => array(
+                'Laminas\View\Model\ViewModel' => array(
                     'text/html',
                     'application/xhtml+xml',
                 ),
-                'ZF\Apigility\Documentation\JsonModel' => array(
+                'Laminas\ApiTools\Documentation\JsonModel' => array(
                     'application/json',
                 ),
-                'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintModel' => array(
+                'Laminas\ApiTools\Documentation\ApiBlueprint\ApiBlueprintModel' => array(
                     'text/vnd.apiblueprint+markdown',
                 ),
             ),
@@ -77,10 +78,10 @@ return array(
     ),
     'view_manager' => array(
         'template_path_stack' => array(
-            'zf-apigility-documentation-blueprint' => __DIR__ . '/../view',
+            'api-tools-documentation-blueprint' => __DIR__ . '/../view',
         ),
         'strategies' => array(
-           'ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy',
+           'Laminas\ApiTools\Documentation\ApiBlueprint\ApiBlueprintViewStrategy',
         ), 
     ),
 );

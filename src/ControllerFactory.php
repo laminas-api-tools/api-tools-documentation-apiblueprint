@@ -1,33 +1,34 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
+ * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility\Documentation\ApiBlueprint;
+namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
+use Laminas\ServiceManager\FactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 class ControllerFactory implements FactoryInterface
 {
     /**
      * @param ServiceLocatorInterface $controllers
      * @return \Blueprint\Controller
-     * @throws ServiceNotCreatedException if the ZF\Apigility\Documentation\ApiFactory service is missing
+     * @throws ServiceNotCreatedException if the Laminas\ApiTools\Documentation\ApiFactory service is missing
      */
     public function createService(ServiceLocatorInterface $controllers)
     {
         $services = $controllers->getServiceLocator();
-        if (!$services->has('ZF\Apigility\Documentation\ApiFactory')) {
+        if (!$services->has('Laminas\ApiTools\Documentation\ApiFactory')) {
             throw new ServiceNotCreatedException(sprintf(
-                '%s\BlueprintController requires the service ZF\Apigility\Documentation\ApiFactory, '
+                '%s\BlueprintController requires the service Laminas\ApiTools\Documentation\ApiFactory, '
                 . 'which was not found',
                 __NAMESPACE__
             ));
         }
-        return new Controller($services->get('ZF\Apigility\Documentation\ApiFactory'));
+        return new Controller($services->get('Laminas\ApiTools\Documentation\ApiFactory'));
     }
 }
