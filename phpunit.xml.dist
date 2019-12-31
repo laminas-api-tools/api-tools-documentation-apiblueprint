@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phpunit
     bootstrap="./vendor/autoload.php">
-	<testsuite name='ZF\\Apigility\\Documentation\\ApiBlueprint tests'>
+	<testsuite name='Laminas\\ApiTools\\Documentation\\ApiBlueprint tests'>
     	<directory>./test</directory>
 	</testsuite>
 </phpunit>

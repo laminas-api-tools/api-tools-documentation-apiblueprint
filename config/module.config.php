@@ -1,20 +1,21 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
+ * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility\Documentation\ApiBlueprint;
+namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
-use Zend\View\Model\ViewModel;
-use ZF\Apigility\Documentation\JsonModel;
+use Laminas\ApiTools\Documentation\JsonModel;
+use Laminas\ServiceManager\Factory\InvokableFactory;
+use Laminas\View\Model\ViewModel;
 
 return [
     'router' => [
         'routes' => [
-            'zf-apigility' => [
+            'api-tools' => [
                 'child_routes' => [
                     'blueprint' => [
                         'type' => 'segment',
@@ -45,17 +46,26 @@ return [
     ],
 
     'service_manager' => [
+        // Legacy Zend Framework aliases
+        'aliases' => [
+            \ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewRenderer::class => ApiBlueprintViewRenderer::class,
+            \ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy::class => ApiBlueprintViewStrategy::class,
+        ],
         'factories' => [
             ApiBlueprintViewRenderer::class => InvokableFactory::class,
             ApiBlueprintViewStrategy::class => ApiBlueprintViewStrategyFactory::class,
         ],
     ],
     'controllers' => [
+        // Legacy Zend Framework aliases
+        'aliases' => [
+            \ZF\Apigility\Documentation\ApiBlueprint\Controller::class => Controller::class,
+        ],
         'factories' => [
             Controller::class => ControllerFactory::class,
         ],
     ],
-    'zf-content-negotiation' => [
+    'api-tools-content-negotiation' => [
         'controllers' => [
             Controller::class => 'Documentation',
         ],
@@ -81,7 +91,7 @@ return [
     ],
     'view_manager' => [
         'template_path_stack' => [
-            'zf-apigility-documentation-blueprint' => __DIR__ . '/../view',
+            'api-tools-documentation-blueprint' => __DIR__ . '/../view',
         ],
         'strategies' => [
             ApiBlueprintViewStrategy::class,

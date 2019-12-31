@@ -6,8 +6,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- [#6](https://github.com/zfcampus/zf-apigility-documentation-apiblueprint/pull/6)
-  adds support for v3 releases of Zend Framework components, keeping
+- [zfcampus/zf-apigility-documentation-apiblueprint#6](https://github.com/zfcampus/zf-apigility-documentation-apiblueprint/pull/6)
+  adds support for v3 releases of Laminas components, keeping
   compatibility for v2 releases.
 
 ### Deprecated
@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- [#6](https://github.com/zfcampus/zf-apigility-documentation-apiblueprint/pull/6)
+- [zfcampus/zf-apigility-documentation-apiblueprint#6](https://github.com/zfcampus/zf-apigility-documentation-apiblueprint/pull/6)
   removes support for PHP 5.5.
 
 ### Fixed
