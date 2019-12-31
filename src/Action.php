@@ -1,13 +1,14 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
+ * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility\Documentation\ApiBlueprint;
+namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
-use ZF\Apigility\Documentation\Operation as BaseOperation;
+use Laminas\ApiTools\Documentation\Operation as BaseOperation;
 
 class Action
 {
@@ -17,7 +18,7 @@ class Action
     private $operation;
 
     /**
-     * @var \ZF\Apigility\Documentation\Field[]
+     * @var \Laminas\ApiTools\Documentation\Field[]
      */
     private $bodyProperties = array();
 
@@ -59,7 +60,7 @@ class Action
     }
 
     /**
-     * @return \ZF\Apigility\Documentation\Field[]
+     * @return \Laminas\ApiTools\Documentation\Field[]
      */
     public function getBodyProperties()
     {
@@ -67,7 +68,7 @@ class Action
     }
 
     /**
-     * @var \ZF\Apigility\Documentation\Field[] $properties
+     * @var \Laminas\ApiTools\Documentation\Field[] $properties
      */
     public function setBodyProperties(array $properties)
     {

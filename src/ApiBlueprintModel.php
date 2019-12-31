@@ -1,13 +1,14 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
+ * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility\Documentation\ApiBlueprint;
+namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
-use Zend\View\Model\ViewModel;
+use Laminas\View\Model\ViewModel;
 
 class ApiBlueprintModel extends ViewModel
 {
@@ -117,7 +118,7 @@ class ApiBlueprintModel extends ViewModel
     /**
      * @var Resource $resource
      */
-    private function writeUriParameters(\ZF\Apigility\Documentation\ApiBlueprint\Resource $resource)
+    private function writeUriParameters(\Laminas\ApiTools\Documentation\ApiBlueprint\Resource $resource)
     {
         $resourceType = $resource->getResourceType();
         if ($resourceType !== Resource::RESOURCE_TYPE_RPC) {
@@ -125,7 +126,7 @@ class ApiBlueprintModel extends ViewModel
             if ($resourceType === Resource::RESOURCE_TYPE_ENTITY) {
                 $this->apiBlueprint .= " + " . $resource->getParameter() . self::EMPTY_ROW;
             } else {
-                // Apigility provides pagination results for collections
+                // Laminas API Tools provides pagination results for collections
                 // automatically, so page parameter will be available.
                 $this->apiBlueprint .= " + " . 'page' . self::EMPTY_ROW;
             }
@@ -142,10 +143,10 @@ class ApiBlueprintModel extends ViewModel
     }
 
     /**
-     * @var \ZF\Apigility\Documentation\Field $property
+     * @var \Laminas\ApiTools\Documentation\Field $property
      * @return string
      */
-    private function getFormattedProperty(\ZF\Apigility\Documentation\Field $property)
+    private function getFormattedProperty(\Laminas\ApiTools\Documentation\Field $property)
     {
         $output = $property->getName();
         $description = $property->getDescription();

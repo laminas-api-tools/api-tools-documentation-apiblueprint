@@ -1,20 +1,21 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
+ * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\Apigility\Documentation\ApiBlueprint;
+namespace LaminasTest\ApiTools\Documentation\ApiBlueprint;
 
+use Laminas\ApiTools\Documentation\ApiBlueprint\Action;
 use PHPUnit_Framework_TestCase as TestCase;
-use ZF\Apigility\Documentation\ApiBlueprint\Action;
 
 class ActionTest extends TestCase
 {
     public function setUp()
     {
-        $baseOperationMock = $this->getMockBuilder('ZF\Apigility\Documentation\Operation')->getMock();
+        $baseOperationMock = $this->getMockBuilder('Laminas\ApiTools\Documentation\Operation')->getMock();
         $this->setExpectation($baseOperationMock, 'getDescription', 'Mock Operation Description');
         $this->setExpectation($baseOperationMock, 'getHttpMethod', 'POST');
         $this->setExpectation($baseOperationMock, 'getRequestDescription', 'Mock request description');
