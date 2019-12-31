@@ -1,15 +1,15 @@
-# API Blueprint Documentation Provider for Apigility
+# API Blueprint Documentation Provider for Laminas API Tools
 
-[![Build Status](https://secure.travis-ci.org/zfcampus/zf-apigility-documentation-apiblueprint.svg?branch=master)](https://secure.travis-ci.org/zfcampus/zf-apigility-documentation-apiblueprint)
-[![Coverage Status](https://coveralls.io/repos/github/zfcampus/zf-apigility-documentation-apiblueprint/badge.svg?branch=master)](https://coveralls.io/github/zfcampus/zf-apigility-documentation-apiblueprint?branch=master)
+[![Build Status](https://travis-ci.org/laminas-api-tools/api-tools-documentation-apiblueprint.svg?branch=master)](https://travis-ci.org/laminas-api-tools/api-tools-documentation-apiblueprint)
+[![Coverage Status](https://coveralls.io/repos/github/laminas-api-tools/api-tools-documentation-apiblueprint/badge.svg?branch=master)](https://coveralls.io/github/laminas-api-tools/api-tools-documentation-apiblueprint?branch=master)
 
 ## Introduction
 
-This module provides Apigility the ability to show API documentation through a
+This module provides Laminas API Tools the ability to show API documentation through a
 [Apiary](https://apiary.io/) documentation.
 
 In addition to providing Apiary documentation, module also plugs in the original
-Apigility documentation and provides content negotiated response with raw
+Laminas API Tools documentation and provides content negotiated response with raw
 [API Blueprint](https://apiblueprint.org).
 
 ## Requirements
@@ -21,14 +21,14 @@ Please see the [composer.json](composer.json) file.
 Run the following `composer` command:
 
 ```console
-$ composer require zfcampus/zf-apigility-documentation-apiblueprint
+$ composer require laminas-api-tools/api-tools-documentation-apiblueprint
 ```
 
 Alternately, manually add the following to your `composer.json`, in the `require` section:
 
 ```javascript
 "require": {
-    "zfcampus/zf-apigility-documentation-apiblueprint": "^1.2"
+    "laminas-api-tools/api-tools-documentation-apiblueprint": "^1.2"
 }
 ```
 
@@ -42,26 +42,26 @@ return [
     /* ... */
     'modules' => [
         /* ... */
-        'ZF\Apigility\Documentation\ApiBlueprint',
+        'Laminas\ApiTools\Documentation\ApiBlueprint',
     .,
     /* ... */
 .;
 ```
 
-> ### zf-component-installer
+> ### laminas-component-installer
 >
-> If you use [zf-component-installer](https://github.com/zendframework/zf-component-installer),
-> that plugin will install zf-apigility-documentation-apiblueprint as a module for you.
+> If you use [laminas-component-installer](https://github.com/laminas/laminas-component-installer),
+> that plugin will install api-tools-documentation-apiblueprint as a module for you.
 
 ## Usage
 
-Apiary documentation can be found on `/apigility/blueprint/:api` uri and is
-accessible from the Apigility welcome page.
+Apiary documentation can be found on `/api-tools/blueprint/:api` uri and is
+accessible from the Laminas API Tools welcome page.
 
 ## Querying API Blueprint
 
 When raw API Blueprint is needed, request can be done via content negotiation.
-Target uri is `/apigility/blueprint/:api` and Accept header is
+Target uri is `/api-tools/blueprint/:api` and Accept header is
 `text/vnd.apiblueprint+markdown`.
 
 To learn more about API Blueprint language, please check its
