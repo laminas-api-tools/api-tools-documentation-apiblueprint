@@ -1,16 +1,17 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
+ * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility\Documentation\ApiBlueprint;
+namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
-use Zend\EventManager\EventManagerInterface;
-use Zend\EventManager\ListenerAggregateInterface;
-use Zend\EventManager\ListenerAggregateTrait;
-use Zend\View\ViewEvent;
+use Laminas\EventManager\EventManagerInterface;
+use Laminas\EventManager\ListenerAggregateInterface;
+use Laminas\EventManager\ListenerAggregateTrait;
+use Laminas\View\ViewEvent;
 
 class ApiBlueprintViewStrategy implements ListenerAggregateInterface
 {
