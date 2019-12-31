@@ -1,15 +1,16 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
+ * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility\Documentation\ApiBlueprint;
+namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use ZF\ContentNegotiation\ViewModel;
-use ZF\Apigility\Documentation\ApiFactory;
+use Laminas\ApiTools\ContentNegotiation\ViewModel;
+use Laminas\ApiTools\Documentation\ApiFactory;
+use Laminas\Mvc\Controller\AbstractActionController;
 
 class Controller extends AbstractActionController
 {
@@ -33,7 +34,7 @@ class Controller extends AbstractActionController
     {
         $apis = $this->apiFactory->createApiList();
         $viewModel = new ViewModel(['apis' => $apis]);
-        $viewModel->setTemplate('zf-apigility-documentation-blueprint/api-list');
+        $viewModel->setTemplate('api-tools-documentation-blueprint/api-list');
         return $viewModel;
     }
 
@@ -46,7 +47,7 @@ class Controller extends AbstractActionController
         $apiVersion = $this->params()->fromRoute('version', '1');
 
         $viewModel = new ViewModel(['api' => $apiName]);
-        $viewModel->setTemplate('zf-apigility-documentation-blueprint/api');
+        $viewModel->setTemplate('api-tools-documentation-blueprint/api');
         $viewModel->setTerminal(true);
 
         $api = $this->apiFactory->createApi($apiName, $apiVersion);
