@@ -1,29 +1,30 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @copyright Copyright (c) 2015 Apiary Ltd. <support@apiary.io>
+ * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\Apigility\Documentation\ApiBlueprint;
+namespace LaminasTest\ApiTools\Documentation\ApiBlueprint;
 
+use Laminas\ApiTools\Documentation\ApiBlueprint\ApiBlueprintModel;
+use Laminas\ApiTools\Documentation\ApiBlueprint\ApiBlueprintRenderer;
+use Laminas\ApiTools\Documentation\ApiBlueprint\ApiBlueprintViewStrategy;
+use Laminas\EventManager\EventManager;
+use Laminas\EventManager\Test\EventListenerIntrospectionTrait;
+use Laminas\Http\Request as HttpRequest;
+use Laminas\Http\Response as HttpResponse;
+use Laminas\Stdlib\Response as StdlibResponse;
+use Laminas\View\ViewEvent;
 use PHPUnit\Framework\TestCase;
-use Zend\EventManager\EventManager;
-use Zend\EventManager\Test\EventListenerIntrospectionTrait;
-use Zend\Http\Request as HttpRequest;
-use Zend\Http\Response as HttpResponse;
-use Zend\Stdlib\Response as StdlibResponse;
-use Zend\View\ViewEvent;
-use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintModel;
-use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintRenderer;
-use ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy;
 
 /**
  * Test the ApiBlueprintViewStrategy.
  *
  * Based on Swagger view strategy test:
  *
- * - https://github.com/zfcampus/zf-apigility-documentation-swagger/blob/master/test/SwaggerViewStrategyTest.php
+ * - https://github.com/laminas-api-tools/api-tools-documentation-swagger/blob/master/test/SwaggerViewStrategyTest.php
  */
 class ApiBlueprintViewStrategyTest extends TestCase
 {
