@@ -35,7 +35,11 @@ class ControllerFactory implements FactoryInterface
             ));
         }
 
-        return new Controller($container->has(ApiFactory::class) ? $container->get(ApiFactory::class) : $container->get(\ZF\Apigility\Documentation\ApiFactory::class));
+        $apiFactory = $container->has(ApiFactory::class)
+            ? $container->get(ApiFactory::class)
+            : $container->get(\ZF\Apigility\Documentation\ApiFactory::class);
+
+        return new Controller($apiFactory);
     }
 
     /**
