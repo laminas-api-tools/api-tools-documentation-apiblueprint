@@ -1,7 +1,6 @@
 # API Blueprint Documentation Provider for Laminas API Tools
 
-[![Build Status](https://travis-ci.com/laminas-api-tools/api-tools-documentation-apiblueprint.svg?branch=master)](https://travis-ci.com/laminas-api-tools/api-tools-documentation-apiblueprint)
-[![Coverage Status](https://coveralls.io/repos/github/laminas-api-tools/api-tools-documentation-apiblueprint/badge.svg?branch=master)](https://coveralls.io/github/laminas-api-tools/api-tools-documentation-apiblueprint?branch=master)
+[![Build Status](https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/actions/workflows/continuous-integration.yml)
 
 ## Introduction
 
