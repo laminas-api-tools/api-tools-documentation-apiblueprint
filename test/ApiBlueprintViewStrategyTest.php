@@ -26,7 +26,7 @@ class ApiBlueprintViewStrategyTest extends TestCase
 {
     use EventListenerIntrospectionTrait;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->events   = new EventManager();
         $this->renderer = new ApiBlueprintRenderer();
@@ -85,7 +85,7 @@ class ApiBlueprintViewStrategyTest extends TestCase
         $headers = $response->getHeaders();
         $this->assertTrue($headers->has('Content-Type'), 'No Content-Type header in HTTP response!');
         $header = $headers->get('Content-Type');
-        $this->assertContains('text/vnd.apiblueprint+markdown', $header->getFieldValue());
+        $this->assertStringContainsString('text/vnd.apiblueprint+markdown', $header->getFieldValue());
     }
 
     /**

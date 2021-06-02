@@ -12,7 +12,7 @@ class ActionTest extends TestCase
     /** @var Action */
     private $action;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $baseOperationMock = $this->getMockBuilder(Operation::class)->getMock();
         $this->setExpectation($baseOperationMock, 'getDescription', 'Mock Operation Description');

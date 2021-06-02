@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class ApiTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $baseApiMock = $this->getMockBuilder(BaseApi::class)->getMock();
         $baseApiMock->expects($this->once())->method('getServices')->will($this->returnValue([]));

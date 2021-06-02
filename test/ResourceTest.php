@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class ResourceTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $baseServiceMock = $this->getMockBuilder(Service::class)->getMock();
         $baseServiceMock
