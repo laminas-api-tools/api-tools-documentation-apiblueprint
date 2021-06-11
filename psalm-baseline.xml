@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.7.3@38c452ae584467e939d55377aaf83b5a26f19dd1">
+  <file src="src/Api.php">
+    <MixedArgument occurrences="1">
+      <code>$service</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$service</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/ApiBlueprintModel.php">
+    <InvalidDocblockParamName occurrences="1">
+      <code>$resources</code>
+    </InvalidDocblockParamName>
+    <MixedArgument occurrences="5">
+      <code>$action</code>
+      <code>$action-&gt;getBodyProperties()</code>
+      <code>$action-&gt;getRequestDescription()</code>
+      <code>$property</code>
+      <code>$this-&gt;variables['documentation']</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="2">
+      <code>$response['code']</code>
+      <code>$response['code']</code>
+    </MixedArrayAccess>
+    <MixedAssignment occurrences="4">
+      <code>$action</code>
+      <code>$property</code>
+      <code>$requestDescription</code>
+      <code>$response</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="6">
+      <code>allowsChangingEntity</code>
+      <code>getBodyProperties</code>
+      <code>getDescription</code>
+      <code>getHttpMethod</code>
+      <code>getRequestDescription</code>
+      <code>getRequestDescription</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="3">
+      <code>$action-&gt;getDescription()</code>
+      <code>$action-&gt;getHttpMethod()</code>
+      <code>$response['code']</code>
+    </MixedOperand>
+  </file>
+  <file src="src/ApiBlueprintRenderer.php">
+    <ImplementedParamTypeMismatch occurrences="1">
+      <code>$nameOrModel</code>
+    </ImplementedParamTypeMismatch>
+    <ImplementedReturnTypeMismatch occurrences="1">
+      <code>void</code>
+    </ImplementedReturnTypeMismatch>
+    <MissingConstructor occurrences="1">
+      <code>$requestUri</code>
+    </MissingConstructor>
+    <MixedInferredReturnType occurrences="1">
+      <code>string</code>
+    </MixedInferredReturnType>
+    <UndefinedDocblockClass occurrences="1">
+      <code>string|ModelInterface</code>
+    </UndefinedDocblockClass>
+    <UndefinedThisPropertyAssignment occurrences="1">
+      <code>$this-&gt;resolver</code>
+    </UndefinedThisPropertyAssignment>
+  </file>
+  <file src="src/ApiBlueprintViewStrategy.php">
+    <InvalidPropertyAssignmentValue occurrences="1">
+      <code>$model</code>
+    </InvalidPropertyAssignmentValue>
+    <MixedArgument occurrences="1">
+      <code>$e-&gt;getRequest()-&gt;getUri()</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$headers</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>addHeaderLine</code>
+    </MixedMethodCall>
+    <PossiblyNullArgument occurrences="1">
+      <code>$response</code>
+    </PossiblyNullArgument>
+    <PossiblyNullReference occurrences="1">
+      <code>getUri</code>
+    </PossiblyNullReference>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>$model</code>
+    </PropertyNotSetInConstructor>
+    <RedundantConditionGivenDocblockType occurrences="1">
+      <code>$this-&gt;model instanceof ApiBlueprintModel</code>
+    </RedundantConditionGivenDocblockType>
+    <UndefinedDocblockClass occurrences="1">
+      <code>ViewModel</code>
+    </UndefinedDocblockClass>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>getUri</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/ApiBlueprintViewStrategyFactory.php">
+    <MixedArgument occurrences="1">
+      <code>$container-&gt;get(ApiBlueprintRenderer::class)</code>
+    </MixedArgument>
+  </file>
+  <file src="src/Controller.php">
+    <MixedArgument occurrences="2">
+      <code>$apiName</code>
+      <code>$apiVersion</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$apiName</code>
+      <code>$apiVersion</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="2">
+      <code>fromRoute</code>
+      <code>fromRoute</code>
+    </MixedMethodCall>
+    <PropertyNotSetInConstructor occurrences="5">
+      <code>Controller</code>
+      <code>Controller</code>
+      <code>Controller</code>
+      <code>Controller</code>
+      <code>Controller</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/ControllerFactory.php">
+    <DeprecatedInterface occurrences="1">
+      <code>ControllerFactory</code>
+    </DeprecatedInterface>
+    <MixedArgument occurrences="2">
+      <code>$apiFactory</code>
+      <code>$container</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$apiFactory</code>
+      <code>$container</code>
+    </MixedAssignment>
+    <ParamNameMismatch occurrences="1">
+      <code>$controllers</code>
+    </ParamNameMismatch>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>getServiceLocator</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/Module.php">
+    <MixedAssignment occurrences="2">
+      <code>$events</code>
+      <code>$view</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="2">
+      <code>attach</code>
+      <code>getEventManager</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>include __DIR__ . '/../config/module.config.php'</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/Resource.php">
+    <PropertyTypeCoercion occurrences="1">
+      <code>$resourceType</code>
+    </PropertyTypeCoercion>
+  </file>
+  <file src="src/ResourceGroup.php">
+    <PossiblyFalseArgument occurrences="1">
+      <code>strpos($this-&gt;service-&gt;getRoute(), '[')</code>
+    </PossiblyFalseArgument>
+  </file>
+  <file src="test/ApiBlueprintViewStrategyTest.php">
+    <MixedArgument occurrences="1">
+      <code>$header-&gt;getFieldValue()</code>
+    </MixedArgument>
+    <PossiblyInvalidMethodCall occurrences="1">
+      <code>getFieldValue</code>
+    </PossiblyInvalidMethodCall>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>getFieldValue</code>
+    </PossiblyUndefinedMethod>
+  </file>
+  <file src="test/ResourceTest.php">
+    <MixedMethodCall occurrences="3">
+      <code>method</code>
+      <code>willReturn</code>
+      <code>with</code>
+    </MixedMethodCall>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>expects</code>
+    </PossiblyUndefinedMethod>
+  </file>
+</files>
