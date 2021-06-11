@@ -1,6 +1,7 @@
 {
     "name": "laminas-api-tools/api-tools-documentation-apiblueprint",
     "description": "Laminas API Tools API Blueprint Documentation Module",
+    "license": "BSD-3-Clause",
     "keywords": [
         "laminas",
         "api-tools",
@@ -10,7 +11,22 @@
         "apiary"
     ],
     "homepage": "https://api-tools.getlaminas.org",
-    "license": "BSD-3-Clause",
+    "support": {
+        "docs": "https://api-tools.getlaminas.org/documentation",
+        "issues": "https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/issues",
+        "source": "https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint",
+        "rss": "https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/releases.atom",
+        "chat": "https://laminas.dev/chat",
+        "forum": "https://discourse.laminas.dev"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laminas": {
+            "module": "Laminas\\ApiTools\\Documentation\\ApiBlueprint"
+        }
+    },
     "require": {
         "php": "^7.3",
         "laminas-api-tools/api-tools-api-problem": "^1.2.1",
@@ -21,9 +37,6 @@
         "laminas/laminas-servicemanager": "^2.7.6 || ^3.1",
         "laminas/laminas-view": "^2.8.1",
         "laminas/laminas-zendframework-bridge": "^1.0"
-    },
-    "replace": {
-        "zfcampus/zf-apigility-documentation-apiblueprint": "^1.3.0"
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "~2.2.0",
@@ -49,12 +62,7 @@
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
     },
-    "support": {
-        "issues": "https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/issues",
-        "forum": "https://discourse.laminas.dev",
-        "chat": "https://laminas.dev/chat",
-        "source": "https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint",
-        "docs": "https://api-tools.getlaminas.org/documentation",
-        "rss": "https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/releases.atom"
+    "replace": {
+        "zfcampus/zf-apigility-documentation-apiblueprint": "^1.3.0"
     }
 }

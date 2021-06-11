@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaminasTest\ApiTools\Documentation\ApiBlueprint;
 
 use Laminas\ApiTools\Documentation\ApiBlueprint\Resource;
