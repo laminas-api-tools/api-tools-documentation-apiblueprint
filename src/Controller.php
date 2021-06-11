@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
 use Laminas\ApiTools\ContentNegotiation\ViewModel;
