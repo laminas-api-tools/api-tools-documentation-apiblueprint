@@ -36,19 +36,22 @@ class ApiBlueprintViewStrategy implements ListenerAggregateInterface
     }
 
     /**
-     * @return null|JsonRenderer
+     * @return null|ApiBlueprintRenderer
      */
     public function selectRenderer(ViewEvent $e)
     {
         $model = $e->getModel();
         if (! $model instanceof ApiBlueprintModel) {
-            return;
+            return null;
         }
         $this->renderer->setRequestUri($e->getRequest()->getUri());
         $this->model = $model;
         return $this->renderer;
     }
 
+    /**
+     * @return void
+     */
     public function injectResponse(ViewEvent $e)
     {
         if (! $this->model instanceof ApiBlueprintModel) {

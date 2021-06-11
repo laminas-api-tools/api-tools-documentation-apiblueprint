@@ -39,7 +39,7 @@ class ApiBlueprintModel extends ViewModel
         $this->apiBlueprint  = 'FORMAT: ' . self::FORMAT . PHP_EOL;
         $this->apiBlueprint .= 'HOST: ' . $scheme . "://" . $host . self::EMPTY_ROW;
         $this->apiBlueprint .= '# ' . $model->getName() . PHP_EOL;
-        $this->apiBlueprint .= $this->writeFormattedResourceGroups($model->getResourceGroups());
+        $this->writeFormattedResourceGroups($model->getResourceGroups());
 
         return $this->apiBlueprint;
     }
@@ -47,7 +47,7 @@ class ApiBlueprintModel extends ViewModel
     /**
      * @param ResourceGroup[] $resourceGroups
      */
-    private function writeFormattedResourceGroups(array $resourceGroups)
+    private function writeFormattedResourceGroups(array $resourceGroups): void
     {
         foreach ($resourceGroups as $resourceGroup) {
             $this->apiBlueprint .= '# Group ' . $resourceGroup->getName() . PHP_EOL;
@@ -58,7 +58,7 @@ class ApiBlueprintModel extends ViewModel
     /**
      * @param Resource[] $resources
      */
-    private function writeFormattedResources(array $resources)
+    private function writeFormattedResources(array $resources): void
     {
         foreach ($resources as $resource) {
             // don't display resources with no actions
@@ -77,7 +77,7 @@ class ApiBlueprintModel extends ViewModel
     /**
      * @param Action[] $resources
      */
-    private function writeFormattedActions(array $actions)
+    private function writeFormattedActions(array $actions): void
     {
         foreach ($actions as $action) {
             $this->apiBlueprint .= '### ' . $action->getDescription() . ' ';
@@ -93,7 +93,7 @@ class ApiBlueprintModel extends ViewModel
         }
     }
 
-    private function writeFormattedResponses(Action $action)
+    private function writeFormattedResponses(Action $action): void
     {
         foreach ($action->getPossibleResponses() as $response) {
             $this->apiBlueprint .= '+ Response ' . $response['code'] . self::EMPTY_ROW;
@@ -104,10 +104,7 @@ class ApiBlueprintModel extends ViewModel
         }
     }
 
-    /**
-     * @param array $bodyProperties
-     */
-    private function writeBodyProperties(array $bodyProperties)
+    private function writeBodyProperties(array $bodyProperties): void
     {
         foreach ($bodyProperties as $property) {
             $this->apiBlueprint .= "+ " . $this->getFormattedProperty($property) . PHP_EOL;
@@ -115,10 +112,7 @@ class ApiBlueprintModel extends ViewModel
         $this->apiBlueprint .= self::EMPTY_ROW;
     }
 
-    /**
-     * @var Resource $resource
-     */
-    private function writeUriParameters(Resource $resource)
+    private function writeUriParameters(Resource $resource): void
     {
         $resourceType = $resource->getResourceType();
         if ($resourceType === Resource::RESOURCE_TYPE_RPC) {
@@ -141,11 +135,7 @@ class ApiBlueprintModel extends ViewModel
         return self::CODE_BLOCK_INDENT . str_replace("\n", "\n" . self::CODE_BLOCK_INDENT, $codeBlock);
     }
 
-    /**
-     * @var Field $property
-     * @return string
-     */
-    private function getFormattedProperty(Field $property)
+    private function getFormattedProperty(Field $property): string
     {
         $output      = $property->getName();
         $description = $property->getDescription();

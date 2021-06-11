@@ -19,7 +19,7 @@ class Resource
     /** @var BaseOperation[] */
     private $operations;
 
-    /** @var BaseService[] */
+    /** @var BaseService */
     private $service;
 
     /** @var string */
@@ -86,7 +86,11 @@ class Resource
      */
     public function getBodyProperties()
     {
-        return $this->service->getFields('input_filter');
+        $fields = $this->service->getFields('input_filter');
+
+        return $fields instanceof Field
+            ? [$fields]
+            : $fields;
     }
 
     /**
@@ -107,9 +111,12 @@ class Resource
         foreach ($this->operations as $operation) {
             $action = new Action($operation);
             if ($action->allowsChangingEntity()) {
-                $action->setBodyProperties(array_filter($this->service->getFields('input_filter'), function ($field) {
-                    return $field->isRequired();
-                }));
+                $action->setBodyProperties(array_filter(
+                    $this->getBodyProperties(),
+                    function (Field $field): bool {
+                        return $field->isRequired();
+                    }
+                ));
             }
             $this->actions[] = $action;
         }

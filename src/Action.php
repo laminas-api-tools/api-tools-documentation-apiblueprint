@@ -61,7 +61,8 @@ class Action
     }
 
     /**
-     * @var Field[] $properties
+     * @param Field[] $properties
+     * @return void
      */
     public function setBodyProperties(array $properties)
     {
@@ -85,7 +86,7 @@ class Action
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function allowsChangingEntity()
     {
