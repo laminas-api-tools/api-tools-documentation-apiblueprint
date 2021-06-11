@@ -6,10 +6,17 @@ namespace LaminasTest\ApiTools\Documentation\ApiBlueprint;
 
 use Laminas\ApiTools\Documentation\ApiBlueprint\Resource;
 use Laminas\ApiTools\Documentation\Service;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ResourceTest extends TestCase
 {
+    /** @var Service|MockObject */
+    private $service;
+
+    /** @var Resource */
+    private $resource;
+
     protected function setUp(): void
     {
         $baseServiceMock = $this->getMockBuilder(Service::class)->getMock();
@@ -26,20 +33,20 @@ class ResourceTest extends TestCase
         $this->resource = new Resource($baseServiceMock, [], 'blueprint/test', 'entity');
     }
 
-    public function testResourceName()
+    public function testResourceName(): void
     {
-        $this->assertEquals($this->resource->getName(), 'Mock Service');
+        self::assertEquals('Mock Service', $this->resource->getName());
     }
 
-    public function testResourceParameter()
+    public function testResourceParameter(): void
     {
-        $this->assertEquals($this->resource->getParameter(), 'Mock parameter');
+        self::assertEquals('Mock parameter', $this->resource->getParameter());
     }
 
     /**
      * @group 4
      */
-    public function testPullsFieldsWhenRetrievingBodyProperties()
+    public function testPullsFieldsWhenRetrievingBodyProperties(): void
     {
         $this->service
             ->expects($this->once())

@@ -24,29 +24,29 @@ class ActionTest extends TestCase
         $this->action = new Action($baseOperationMock);
     }
 
-    public function testActionDescription()
+    public function testActionDescription(): void
     {
-        $this->assertEquals($this->action->getDescription(), 'Mock Operation Description');
+        self::assertEquals('Mock Operation Description', $this->action->getDescription());
     }
 
-    public function testActionHttpMethod()
+    public function testActionHttpMethod(): void
     {
-        $this->assertEquals($this->action->getHttpMethod(), 'POST');
+        self::assertEquals('POST', $this->action->getHttpMethod());
     }
 
-    public function testAllowsChangingEntityMethod()
+    public function testAllowsChangingEntityMethod(): void
     {
-        $this->assertTrue($this->action->allowsChangingEntity());
+        self::assertTrue($this->action->allowsChangingEntity());
     }
 
-    public function testActionRequestDescription()
+    public function testActionRequestDescription(): void
     {
-        $this->assertEquals($this->action->getRequestDescription(), 'Mock request description');
+        self::assertEquals('Mock request description', $this->action->getRequestDescription());
     }
 
-    public function testActionResponseDescription()
+    public function testActionResponseDescription(): void
     {
-        $this->assertEquals($this->action->getResponseDescription(), 'Mock response description');
+        self::assertEquals('Mock response description', $this->action->getResponseDescription());
     }
 
     /** @param mixed $returnValue */

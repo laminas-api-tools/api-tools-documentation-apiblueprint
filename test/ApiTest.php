@@ -10,6 +10,9 @@ use PHPUnit\Framework\TestCase;
 
 class ApiTest extends TestCase
 {
+    /** @var Api */
+    private $api;
+
     protected function setUp(): void
     {
         $baseApiMock = $this->getMockBuilder(BaseApi::class)->getMock();
@@ -18,13 +21,13 @@ class ApiTest extends TestCase
         $this->api = new Api($baseApiMock);
     }
 
-    public function testApiName()
+    public function testApiName(): void
     {
-        $this->assertEquals($this->api->getName(), 'Mock API');
+        self::assertEquals('Mock API', $this->api->getName());
     }
 
-    public function testResourceGroups()
+    public function testResourceGroups(): void
     {
-        $this->assertEquals($this->api->getResourceGroups(), []);
+        self::assertEquals([], $this->api->getResourceGroups());
     }
 }

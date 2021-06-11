@@ -28,6 +28,15 @@ class ApiBlueprintViewStrategyTest extends TestCase
 {
     use EventListenerIntrospectionTrait;
 
+    /** @var EventManager */
+    private $events;
+
+    /** @var ApiBlueprintRenderer */
+    private $renderer;
+
+    /** @var ApiBlueprintViewStrategy */
+    private $strategy;
+
     protected function setUp(): void
     {
         $this->events   = new EventManager();
@@ -36,7 +45,7 @@ class ApiBlueprintViewStrategyTest extends TestCase
         $this->strategy->attach($this->events);
     }
 
-    public function testStrategyAttachesToViewEventsAtPriority200()
+    public function testStrategyAttachesToViewEventsAtPriority200(): void
     {
         $this->assertListenerAtPriority(
             [$this->strategy, 'selectRenderer'],
@@ -61,7 +70,7 @@ class ApiBlueprintViewStrategyTest extends TestCase
         $event->setRequest(new HttpRequest());
 
         $renderer = $this->strategy->selectRenderer($event);
-        $this->assertSame($this->renderer, $renderer);
+        self::assertSame($this->renderer, $renderer);
         return $event;
     }
 
@@ -70,7 +79,7 @@ class ApiBlueprintViewStrategyTest extends TestCase
         $event = new ViewEvent();
         $event->setName(ViewEvent::EVENT_RENDERER);
 
-        $this->assertNull($this->strategy->selectRenderer($event));
+        self::assertNull($this->strategy->selectRenderer($event));
         return $event;
     }
 
@@ -85,9 +94,9 @@ class ApiBlueprintViewStrategyTest extends TestCase
         $this->strategy->selectRenderer($event);
         $this->strategy->injectResponse($event);
         $headers = $response->getHeaders();
-        $this->assertTrue($headers->has('Content-Type'), 'No Content-Type header in HTTP response!');
+        self::assertTrue($headers->has('Content-Type'), 'No Content-Type header in HTTP response!');
         $header = $headers->get('Content-Type');
-        $this->assertStringContainsString('text/vnd.apiblueprint+markdown', $header->getFieldValue());
+        self::assertStringContainsString('text/vnd.apiblueprint+markdown', $header->getFieldValue());
     }
 
     /**
@@ -101,7 +110,7 @@ class ApiBlueprintViewStrategyTest extends TestCase
         $this->strategy->selectRenderer($event);
         $this->strategy->injectResponse($event);
         $headers = $response->getHeaders();
-        $this->assertFalse($headers->has('Content-Type'), 'No Content-Type header in HTTP response!');
+        self::assertFalse($headers->has('Content-Type'), 'No Content-Type header in HTTP response!');
     }
 
     /**
@@ -113,6 +122,6 @@ class ApiBlueprintViewStrategyTest extends TestCase
         $event->setResponse($response);
         $this->strategy->selectRenderer($event);
         $this->strategy->injectResponse($event);
-        $this->assertFalse(method_exists($response, 'getHeaders'));
+        self::assertFalse(method_exists($response, 'getHeaders'));
     }
 }
