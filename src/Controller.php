@@ -1,13 +1,5 @@
 <?php
 
-/**
- * @codingStandardsIgnoreStart Generic.Files.LineLength.TooLong
- * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
- * @codingStandardsIgnoreEnd Generic.Files.LineLength.TooLong
- */
-
 namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
 use Laminas\ApiTools\ContentNegotiation\ViewModel;
@@ -16,14 +8,9 @@ use Laminas\Mvc\Controller\AbstractActionController;
 
 class Controller extends AbstractActionController
 {
-    /**
-     * @var ApiFactory
-     */
+    /** @var ApiFactory */
     protected $apiFactory;
 
-    /**
-     * @param ApiFactory $apiFactory
-     */
     public function __construct(ApiFactory $apiFactory)
     {
         $this->apiFactory = $apiFactory;
@@ -34,7 +21,7 @@ class Controller extends AbstractActionController
      */
     public function listAction()
     {
-        $apis = $this->apiFactory->createApiList();
+        $apis      = $this->apiFactory->createApiList();
         $viewModel = new ViewModel(['apis' => $apis]);
         $viewModel->setTemplate('api-tools-documentation-blueprint/api-list');
         return $viewModel;
@@ -45,7 +32,7 @@ class Controller extends AbstractActionController
      */
     public function showAction()
     {
-        $apiName = $this->params()->fromRoute('api');
+        $apiName    = $this->params()->fromRoute('api');
         $apiVersion = $this->params()->fromRoute('version', '1');
 
         $viewModel = new ViewModel(['api' => $apiName]);

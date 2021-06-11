@@ -1,13 +1,5 @@
 <?php
 
-/**
- * @codingStandardsIgnoreStart Generic.Files.LineLength.TooLong
- * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
- * @codingStandardsIgnoreEnd Generic.Files.LineLength.TooLong
- */
-
 namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
 use Laminas\EventManager\EventManagerInterface;
@@ -15,23 +7,18 @@ use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\EventManager\ListenerAggregateTrait;
 use Laminas\View\ViewEvent;
 
+use function method_exists;
+
 class ApiBlueprintViewStrategy implements ListenerAggregateInterface
 {
     use ListenerAggregateTrait;
 
-    /**
-     * @var ViewModel
-     */
+    /** @var ViewModel */
     protected $model;
 
-    /**
-     * @var ApiBlueprintRenderer
-     */
+    /** @var ApiBlueprintRenderer */
     protected $renderer;
 
-    /**
-     * @param ApiBlueprintRenderer $renderer
-     */
     public function __construct(ApiBlueprintRenderer $renderer)
     {
         $this->renderer = $renderer;
@@ -47,7 +34,6 @@ class ApiBlueprintViewStrategy implements ListenerAggregateInterface
     }
 
     /**
-     * @param ViewEvent $e
      * @return null|JsonRenderer
      */
     public function selectRenderer(ViewEvent $e)
@@ -61,9 +47,6 @@ class ApiBlueprintViewStrategy implements ListenerAggregateInterface
         return $this->renderer;
     }
 
-    /**
-     * @param ViewEvent $e
-     */
     public function injectResponse(ViewEvent $e)
     {
         if (! $this->model instanceof ApiBlueprintModel) {

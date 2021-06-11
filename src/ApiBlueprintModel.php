@@ -1,42 +1,40 @@
 <?php
 
-/**
- * @codingStandardsIgnoreStart Generic.Files.LineLength.TooLong
- * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
- * @codingStandardsIgnoreEnd Generic.Files.LineLength.TooLong
- */
-
 namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
 use Laminas\ApiTools\Documentation\Field;
 use Laminas\View\Model\ViewModel;
 
+use function count;
+use function str_replace;
+use function strlen;
+
+use const PHP_EOL;
+
 class ApiBlueprintModel extends ViewModel
 {
+    public const FORMAT            = '1A';
+    public const CODE_BLOCK_INDENT = '        '; // 8 spaces, cannot use tabs (\t)
+    public const EMPTY_ROW         = "\n\n";
 
-    const FORMAT = '1A';
-    const CODE_BLOCK_INDENT = '        '; // 8 spaces, cannot use tabs (\t)
-    const EMPTY_ROW = "\n\n";
-
-    /**
-     * @var string
-     */
+    /** @var string */
     private $apiBlueprint = '';
 
+    /** @return bool */
     public function terminate()
     {
         return true;
     }
 
     /**
-     * @return  string
+     * @param string $scheme
+     * @param string $host
+     * @return string
      */
     public function getFormattedApiBlueprint($scheme, $host)
     {
-        $model = new Api($this->variables['documentation']);
-        $this->apiBlueprint = 'FORMAT: ' . self::FORMAT . PHP_EOL;
+        $model               = new Api($this->variables['documentation']);
+        $this->apiBlueprint  = 'FORMAT: ' . self::FORMAT . PHP_EOL;
         $this->apiBlueprint .= 'HOST: ' . $scheme . "://" . $host . self::EMPTY_ROW;
         $this->apiBlueprint .= '# ' . $model->getName() . PHP_EOL;
         $this->apiBlueprint .= $this->writeFormattedResourceGroups($model->getResourceGroups());
@@ -93,14 +91,11 @@ class ApiBlueprintModel extends ViewModel
         }
     }
 
-    /**
-     * @param Action $action
-     */
     private function writeFormattedResponses(Action $action)
     {
         foreach ($action->getPossibleResponses() as $response) {
-            $this->apiBlueprint .= '+ Response ' . $response['code']  . self::EMPTY_ROW;
-            if ($response['code'] == 200) {
+            $this->apiBlueprint .= '+ Response ' . $response['code'] . self::EMPTY_ROW;
+            if ($response['code'] === 200 || $response['code'] === '200') {
                 $this->apiBlueprint .= $this->getFormattedCodeBlock($action->getResponseDescription())
                     . self::EMPTY_ROW;
             }
@@ -139,11 +134,7 @@ class ApiBlueprintModel extends ViewModel
         $this->apiBlueprint .= " + " . 'page' . self::EMPTY_ROW;
     }
 
-    /**
-     * @var string $codeBlock
-     * @return string
-     */
-    private function getFormattedCodeBlock($codeBlock)
+    private function getFormattedCodeBlock(string $codeBlock): string
     {
         return self::CODE_BLOCK_INDENT . str_replace("\n", "\n" . self::CODE_BLOCK_INDENT, $codeBlock);
     }
@@ -154,7 +145,7 @@ class ApiBlueprintModel extends ViewModel
      */
     private function getFormattedProperty(Field $property)
     {
-        $output = $property->getName();
+        $output      = $property->getName();
         $description = $property->getDescription();
         if (strlen($description)) {
             $output .= ' - ' . $description;

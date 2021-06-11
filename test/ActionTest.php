@@ -1,21 +1,17 @@
 <?php
 
-/**
- * @codingStandardsIgnoreStart Generic.Files.LineLength.TooLong
- * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
- * @codingStandardsIgnoreEnd Generic.Files.LineLength.TooLong
- */
-
 namespace LaminasTest\ApiTools\Documentation\ApiBlueprint;
 
 use Laminas\ApiTools\Documentation\ApiBlueprint\Action;
 use Laminas\ApiTools\Documentation\Operation;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ActionTest extends TestCase
 {
+    /** @var Action */
+    private $action;
+
     protected function setUp()
     {
         $baseOperationMock = $this->getMockBuilder(Operation::class)->getMock();
@@ -36,7 +32,7 @@ class ActionTest extends TestCase
         $this->assertEquals($this->action->getHttpMethod(), 'POST');
     }
 
-    public function testallowsChangingEntityMethod()
+    public function testAllowsChangingEntityMethod()
     {
         $this->assertTrue($this->action->allowsChangingEntity());
     }
@@ -51,7 +47,8 @@ class ActionTest extends TestCase
         $this->assertEquals($this->action->getResponseDescription(), 'Mock response description');
     }
 
-    private function setExpectation($baseOperationMock, $methodName, $returnValue)
+    /** @param mixed $returnValue */
+    private function setExpectation(MockObject $baseOperationMock, string $methodName, $returnValue): void
     {
         $baseOperationMock->expects($this->any())->method($methodName)->will($this->returnValue($returnValue));
     }
