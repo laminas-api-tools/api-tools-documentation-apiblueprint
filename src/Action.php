@@ -1,30 +1,21 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
+use Laminas\ApiTools\Documentation\Field;
 use Laminas\ApiTools\Documentation\Operation as BaseOperation;
+
+use function in_array;
 
 class Action
 {
-    /**
-     * @var BaseOperation
-     */
+    /** @var BaseOperation */
     private $operation;
 
-    /**
-     * @var \Laminas\ApiTools\Documentation\Field[]
-     */
+    /** @var Field[] */
     private $bodyProperties = [];
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private static $entityChangingMethods = ['PUT', 'POST', 'PATCH'];
 
     /**
@@ -60,7 +51,7 @@ class Action
     }
 
     /**
-     * @return \Laminas\ApiTools\Documentation\Field[]
+     * @return Field[]
      */
     public function getBodyProperties()
     {
@@ -68,7 +59,7 @@ class Action
     }
 
     /**
-     * @var \Laminas\ApiTools\Documentation\Field[] $properties
+     * @var Field[] $properties
      */
     public function setBodyProperties(array $properties)
     {

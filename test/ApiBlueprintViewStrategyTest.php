@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
- */
-
 namespace LaminasTest\ApiTools\Documentation\ApiBlueprint;
 
 use Laminas\ApiTools\Documentation\ApiBlueprint\ApiBlueprintModel;
@@ -18,6 +12,8 @@ use Laminas\Http\Response as HttpResponse;
 use Laminas\Stdlib\Response as StdlibResponse;
 use Laminas\View\ViewEvent;
 use PHPUnit\Framework\TestCase;
+
+use function method_exists;
 
 /**
  * Test the ApiBlueprintViewStrategy.
@@ -55,7 +51,7 @@ class ApiBlueprintViewStrategyTest extends TestCase
         );
     }
 
-    public function testSelectRendererReturnsApiBlueprintRendererWhenApiBlueprintViewModelIsPresentInEvent()
+    public function testSelectRendererReturnsApiBlueprintRendererWhenApiBlueprintViewModelIsPresentInEvent(): ViewEvent
     {
         $event = new ViewEvent();
         $event->setName(ViewEvent::EVENT_RENDERER);
@@ -67,7 +63,7 @@ class ApiBlueprintViewStrategyTest extends TestCase
         return $event;
     }
 
-    public function testSelectRendererReturnsNullWhenApiBlueprintViewModelIsNotPresentInEvent()
+    public function testSelectRendererReturnsNullWhenApiBlueprintViewModelIsNotPresentInEvent(): ViewEvent
     {
         $event = new ViewEvent();
         $event->setName(ViewEvent::EVENT_RENDERER);
@@ -79,8 +75,9 @@ class ApiBlueprintViewStrategyTest extends TestCase
     /**
      * @depends testSelectRendererReturnsApiBlueprintRendererWhenApiBlueprintViewModelIsPresentInEvent
      */
-    public function testInjectResponseSetsContentTypeWhenJsonRendererWasSelectedBySelectRendererEvent($event)
-    {
+    public function testInjectResponseSetsContentTypeWhenJsonRendererWasSelectedBySelectRendererEvent(
+        ViewEvent $event
+    ): void {
         $response = new HttpResponse();
         $event->setResponse($response);
         $this->strategy->selectRenderer($event);
@@ -94,8 +91,9 @@ class ApiBlueprintViewStrategyTest extends TestCase
     /**
      * @depends testSelectRendererReturnsNullWhenApiBlueprintViewModelIsNotPresentInEvent
      */
-    public function testInjectResponseDoesNothingWhenJsonRendererWasNotSelectedBySelectRendererEvent($event)
-    {
+    public function testInjectResponseDoesNothingWhenJsonRendererWasNotSelectedBySelectRendererEvent(
+        ViewEvent $event
+    ): void {
         $response = new HttpResponse();
         $event->setResponse($response);
         $this->strategy->selectRenderer($event);
@@ -107,7 +105,7 @@ class ApiBlueprintViewStrategyTest extends TestCase
     /**
      * @depends testSelectRendererReturnsApiBlueprintRendererWhenApiBlueprintViewModelIsPresentInEvent
      */
-    public function testInjectResponseDoesNothingIfResponseIsNotHttpEnabled($event)
+    public function testInjectResponseDoesNothingIfResponseIsNotHttpEnabled(ViewEvent $event): void
     {
         $response = new StdlibResponse();
         $event->setResponse($response);

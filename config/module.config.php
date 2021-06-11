@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
 use Laminas\ApiTools\Documentation\JsonModel;
@@ -13,13 +7,13 @@ use Laminas\ServiceManager\Factory\InvokableFactory;
 use Laminas\View\Model\ViewModel;
 
 return [
-    'router' => [
+    'router'                        => [
         'routes' => [
             'api-tools' => [
                 'child_routes' => [
                     'blueprint' => [
-                        'type' => 'segment',
-                        'options' => [
+                        'type'          => 'segment',
+                        'options'       => [
                             'route'    => '/blueprint',
                             'defaults' => [
                                 'controller' => Controller::class,
@@ -27,11 +21,11 @@ return [
                             ],
                         ],
                         'may_terminate' => true,
-                        'child_routes' => [
+                        'child_routes'  => [
                             'api' => [
-                                'type' => 'segment',
-                                'options' => [
-                                    'route' => '/:api',
+                                'type'          => 'segment',
+                                'options'       => [
+                                    'route'    => '/:api',
                                     'defaults' => [
                                         'action' => 'show',
                                     ],
@@ -44,11 +38,10 @@ return [
             ],
         ],
     ],
-
-    'service_manager' => [
+    'service_manager'               => [
         // Legacy Zend Framework aliases
-        'aliases' => [
-            \ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintRenderer::class => ApiBlueprintRenderer::class,
+        'aliases'   => [
+            \ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintRenderer::class     => ApiBlueprintRenderer::class,
             \ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy::class => ApiBlueprintViewStrategy::class,
         ],
         'factories' => [
@@ -56,9 +49,9 @@ return [
             ApiBlueprintViewStrategy::class => ApiBlueprintViewStrategyFactory::class,
         ],
     ],
-    'controllers' => [
+    'controllers'                   => [
         // Legacy Zend Framework aliases
-        'aliases' => [
+        'aliases'   => [
             \ZF\Apigility\Documentation\ApiBlueprint\Controller::class => Controller::class,
         ],
         'factories' => [
@@ -66,7 +59,7 @@ return [
         ],
     ],
     'api-tools-content-negotiation' => [
-        'controllers' => [
+        'controllers'      => [
             Controller::class => 'Documentation',
         ],
         'accept_whitelist' => [
@@ -74,13 +67,13 @@ return [
                 'text/vnd.apiblueprint+markdown',
             ],
         ],
-        'selectors' => [
+        'selectors'        => [
             'Documentation' => [
-                ViewModel::class => [
+                ViewModel::class         => [
                     'text/html',
                     'application/xhtml+xml',
                 ],
-                JsonModel::class => [
+                JsonModel::class         => [
                     'application/json',
                 ],
                 ApiBlueprintModel::class => [
@@ -89,11 +82,11 @@ return [
             ],
         ],
     ],
-    'view_manager' => [
+    'view_manager'                  => [
         'template_path_stack' => [
             'api-tools-documentation-blueprint' => __DIR__ . '/../view',
         ],
-        'strategies' => [
+        'strategies'          => [
             ApiBlueprintViewStrategy::class,
         ],
     ],

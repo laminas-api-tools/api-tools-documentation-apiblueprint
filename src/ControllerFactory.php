@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
 use Interop\Container\ContainerInterface;
@@ -14,18 +8,21 @@ use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\FactoryInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 
+use function sprintf;
+
 class ControllerFactory implements FactoryInterface
 {
     /**
      * Create and return a Controller instance.
      *
-     * @param ContainerInterface $container
+     * @param string $requestedName
      * @return Controller
-     * @throws ServiceNotCreatedException if the ApiFactory service is missing.
+     * @throws ServiceNotCreatedException If the ApiFactory service is missing.
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
-        if (! $container->has(ApiFactory::class)
+        if (
+            ! $container->has(ApiFactory::class)
             && ! $container->has(\ZF\Apigility\Documentation\ApiFactory::class)
         ) {
             throw new ServiceNotCreatedException(sprintf(
@@ -47,9 +44,8 @@ class ControllerFactory implements FactoryInterface
      *
      * Provided for backwards compatibility; proxies to __invoke().
      *
-     * @param ServiceLocatorInterface $controllers
      * @return Controller
-     * @throws ServiceNotCreatedException if the ApiFactory service is missing.
+     * @throws ServiceNotCreatedException If the ApiFactory service is missing.
      */
     public function createService(ServiceLocatorInterface $controllers)
     {

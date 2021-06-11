@@ -1,12 +1,8 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\Documentation\ApiBlueprint;
+
+use Laminas\Mvc\MvcEvent;
 
 class Module
 {
@@ -25,7 +21,7 @@ class Module
      *
      * Attaches module's render listener to MVC event manager instance.
      *
-     * @param \Laminas\Mvc\MvcEvent
+     * @param MvcEvent $e
      * @return void
      */
     public function onBootstrap($e)
@@ -41,7 +37,7 @@ class Module
      * Attaches ApiBlueprintViewStrategy to view event manager instance, if an
      * ApiBlueprint view model is detected.
      *
-     * @param \Laminas\Mvc\MvcEvent
+     * @param MvcEvent $e
      * @return void
      */
     public function onRender($e)

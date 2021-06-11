@@ -1,30 +1,21 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools-documentation-apiblueprint/blob/master/LICENSE.md New BSD License
- */
-
 namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
 use Laminas\ApiTools\Documentation\Service as BaseService;
 
+use function str_replace;
+use function strpos;
+use function substr;
+
 class ResourceGroup
 {
-    /**
-     * @var BaseService
-     */
+    /** @var BaseService */
     protected $service;
 
-    /**
-     * @var Resource[]
-     */
+    /** @var Resource[] */
     private $resources = [];
 
-    /**
-     * @param BaseService $service
-     */
     public function __construct(BaseService $service)
     {
         $this->service = $service;
