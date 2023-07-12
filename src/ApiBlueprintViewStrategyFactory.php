@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\Documentation\ApiBlueprint;
 
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 
 class ApiBlueprintViewStrategyFactory
 {
