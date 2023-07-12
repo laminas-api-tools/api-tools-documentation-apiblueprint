@@ -41,21 +41,12 @@ return [
         ],
     ],
     'service_manager'               => [
-        // Legacy Zend Framework aliases
-        'aliases'   => [
-            \ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintRenderer::class     => ApiBlueprintRenderer::class,
-            \ZF\Apigility\Documentation\ApiBlueprint\ApiBlueprintViewStrategy::class => ApiBlueprintViewStrategy::class,
-        ],
         'factories' => [
             ApiBlueprintRenderer::class     => InvokableFactory::class,
             ApiBlueprintViewStrategy::class => ApiBlueprintViewStrategyFactory::class,
         ],
     ],
     'controllers'                   => [
-        // Legacy Zend Framework aliases
-        'aliases'   => [
-            \ZF\Apigility\Documentation\ApiBlueprint\Controller::class => Controller::class,
-        ],
         'factories' => [
             Controller::class => ControllerFactory::class,
         ],
